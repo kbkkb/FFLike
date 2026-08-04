@@ -67,6 +67,134 @@ const CLASSES = {
     armor: 'cloth',
     skills: ['punch', 'focus'],
     unarmed: 5
+  },
+  red_mage: {
+    name: '爱萝',
+    job: '红魔导士',
+    color: '#d23a6e',
+    hp: [38, 7],
+    mp: [16, 3],
+    atk: [9, 2],
+    def: [6, 1],
+    mag: [11, 2],
+    spr: [7, 1],
+    spd: [7, 1],
+    weapon: 'rapier',
+    armor: 'cloth',
+    skills: ['fire', 'slash', 'cure'],
+    unarmed: 3
+  },
+  paladin: {
+    name: '凯恩',
+    job: '圣骑士',
+    color: '#7fae8b',
+    hp: [52, 10],
+    mp: [10, 2],
+    atk: [9, 1],
+    def: [10, 3],
+    mag: [3, 1],
+    spr: [9, 2],
+    spd: [5, 1],
+    weapon: 'holy_mace',
+    armor: 'chain',
+    skills: ['smite', 'guard', 'cure'],
+    unarmed: 4
+  },
+  ninja: {
+    name: '影',
+    job: '盗贼忍者',
+    color: '#6f7cae',
+    hp: [36, 6],
+    mp: [14, 2],
+    atk: [11, 3],
+    def: [4, 1],
+    mag: [4, 1],
+    spr: [5, 1],
+    spd: [12, 2],
+    weapon: 'shuriken',
+    armor: 'cloth',
+    skills: ['double', 'thunder', 'focus'],
+    unarmed: 4
+  },
+  dragoon: {
+    name: '希尔',
+    job: '龙骑士',
+    color: '#3f8fa8',
+    hp: [50, 10],
+    mp: [8, 1],
+    atk: [12, 3],
+    def: [8, 1],
+    mag: [2, 1],
+    spr: [5, 1],
+    spd: [9, 1],
+    weapon: 'dragon_lance',
+    armor: 'leather',
+    skills: ['jump', 'guard', 'focus'],
+    unarmed: 5
+  },
+  summoner: {
+    name: '菲亚',
+    job: '召唤师',
+    color: '#a878d8',
+    hp: [28, 8],
+    mp: [28, 6],
+    atk: [4, 1],
+    def: [3, 1],
+    mag: [16, 5],
+    spr: [12, 2],
+    spd: [6, 1],
+    weapon: 'aether_staff',
+    armor: 'robe',
+    skills: ['thunderbolt', 'fire', 'cura'],
+    unarmed: 1
+  },
+  bard: {
+    name: '路西',
+    job: '吟游诗人',
+    color: '#e0a763',
+    hp: [34, 7],
+    mp: [18, 4],
+    atk: [6, 1],
+    def: [5, 1],
+    mag: [9, 2],
+    spr: [10, 2],
+    spd: [9, 1],
+    weapon: 'harp',
+    armor: 'cloth',
+    skills: ['focus', 'cure', 'arena'],
+    unarmed: 2
+  },
+  geomancer: {
+    name: '岩',
+    job: '风水术师',
+    color: '#7c9a53',
+    hp: [46, 9],
+    mp: [12, 2],
+    atk: [8, 1],
+    def: [9, 2],
+    mag: [10, 2],
+    spr: [9, 2],
+    spd: [6, 1],
+    weapon: 'earth_rod',
+    armor: 'leather',
+    skills: ['quake', 'guard', 'cure'],
+    unarmed: 3
+  },
+  alchemist: {
+    name: '露琪',
+    job: '炼金术士',
+    color: '#8fcb7a',
+    hp: [36, 7],
+    mp: [16, 3],
+    atk: [7, 1],
+    def: [6, 1],
+    mag: [12, 3],
+    spr: [9, 2],
+    spd: [8, 1],
+    weapon: 'spirit_rod',
+    armor: 'robe',
+    skills: ['chemical', 'fire', 'cure'],
+    unarmed: 2
   }
 };
 
@@ -80,7 +208,14 @@ const SKILLS = {
   thunder: { name: '雷电', kind: 'magic', power: 1.7, cost: 7, target: 'enemy', desc: '雷属性单体魔法' },
   cure: { name: '治疗', kind: 'heal', power: 2.0, cost: 5, target: 'ally', desc: '回复一名队友' },
   cura: { name: '全愈', kind: 'heal', power: 3.2, cost: 14, target: 'all_ally', desc: '回复全体队友' },
-  raise: { name: '复苏', kind: 'revive', power: 0.5, cost: 12, target: 'ally', desc: '复活一名倒下的队友' }
+raise: { name: '复苏', kind: 'revive', power: 0.5, cost: 12, target: 'ally', desc: '复活一名倒下的队友' },
+  smite: { name: '圣光斩', kind: 'attack', power: 1.7, cost: 0, target: 'enemy', desc: '圣骑士的强力单体斩击' },
+  double: { name: '影连击', kind: 'attack', power: 1.15, cost: 0, target: 'enemy', desc: '两次快速的忍刀攻击' },
+  jump: { name: '跳跃', kind: 'attack', power: 1.9, cost: 0, target: 'enemy', desc: '跃空坠落的强力突刺' },
+  thunderbolt: { name: '召唤·雷霆', kind: 'magic', power: 2.3, cost: 12, target: 'enemy', desc: '召来轰雷轰击单体敌人' },
+  arena: { name: '鼓舞之声', kind: 'buff', power: 1.6, cost: 0, target: 'ally', desc: '为一名队友增强下一次魔法攻击' },
+  quake: { name: '大地震', kind: 'magic', power: 1.8, cost: 8, target: 'enemy', desc: '震荡大地打击敌人' },
+  chemical: { name: '腐蚀药剂', kind: 'magic', power: 1.9, cost: 7, target: 'enemy', desc: '洒出腐蚀性药剂' }
 };
 
 const WEAPONS = {
@@ -91,7 +226,23 @@ const WEAPONS = {
   mythril_staff: { name: '秘银杖', power: 8, cost: 800, jobs: ['priest', 'mage'], mag: 9, desc: '强化魔法威力' },
   sage_staff: { name: '贤者之杖', power: 14, cost: 2100, jobs: ['priest', 'mage'], mag: 15, desc: '贤者的高阶法杖' },
   knuckles: { name: '铁拳套', power: 8, cost: 260, jobs: ['monk'], mag: 0, desc: '武僧专用拳套' },
-  mythril_knuckles: { name: '秘银拳套', power: 16, cost: 1000, jobs: ['monk'], mag: 0, desc: '轻而致命的拳套' }
+  mythril_knuckles: { name: '秘银拳套', power: 16, cost: 1000, jobs: ['monk'], mag: 0, desc: '轻而致命的拳套' },
+  rapier: { name: '刺剑', power: 9, cost: 420, jobs: ['red_mage'], mag: 2, desc: '红魔导士的轻盈长剑' },
+  mythril_rapier: { name: '秘银刺剑', power: 16, cost: 1500, jobs: ['red_mage'], mag: 4, desc: '集物理与魔法于一身' },
+  holy_mace: { name: '圣光权杖', power: 8, cost: 400, jobs: ['paladin'], mag: 0, desc: '圣骑士的沉重权杖' },
+  mythril_mace: { name: '秘银权杖', power: 15, cost: 1400, jobs: ['paladin'], mag: 0, desc: '沉重有力的秘银锤' },
+  shuriken: { name: '手里剑', power: 6, cost: 300, jobs: ['ninja'], mag: 0, ranged: true, desc: '飞掷的暗刃，快速消耗' },
+  mythril_shuriken: { name: '秘银手里剑', power: 13, cost: 1100, jobs: ['ninja'], mag: 0, ranged: true, desc: '淬炼的暗器' },
+  dragon_lance: { name: '龙枪', power: 12, cost: 700, jobs: ['dragoon'], mag: 0, desc: '龙骑士的长枪' },
+  mythril_lance: { name: '秘银龙枪', power: 20, cost: 1800, jobs: ['dragoon'], mag: 0, desc: '足以贯穿龙鳞' },
+  aether_staff: { name: '以太魔杖', power: 6, cost: 750, jobs: ['summoner'], mag: 12, desc: '引导强大召唤的魔杖' },
+  void_staff: { name: '虚空之杖', power: 10, cost: 2400, jobs: ['summoner'], mag: 20, desc: '召唤高阶存在的魔杖' },
+  harp: { name: '竖琴', power: 5, cost: 360, jobs: ['bard'], mag: 2, desc: '吟游诗人的旋律之琴' },
+  golden_harp: { name: '黄金竖琴', power: 8, cost: 1200, jobs: ['bard'], mag: 5, desc: '金弦振动的圣音' },
+  earth_rod: { name: '地脉棒', power: 6, cost: 450, jobs: ['geomancer'], mag: 5, desc: '沟通大地之力的棒杖' },
+  geomancer_staff: { name: '源灵杖', power: 9, cost: 1600, jobs: ['geomancer'], mag: 10, desc: '蕴含大地的生命脉动' },
+  spirit_rod: { name: '炼魂杖', power: 6, cost: 420, jobs: ['alchemist'], mag: 6, desc: '调和药剂的符杖' },
+  mythril_rod: { name: '秘银炼金棒', power: 10, cost: 1500, jobs: ['alchemist'], mag: 12, desc: '高级炼金器材' }
 };
 
 const ARMORS = {
@@ -110,11 +261,38 @@ const ITEMS = {
   ether: { name: '以太', desc: '回复 50 MP', cost: 140, kind: 'ether', power: 50 },
   phoenix: { name: '不死鸟之尾', desc: '复活并回复 50% HP', cost: 500, kind: 'revive', power: 0.5 },
   smoke: { name: '烟雾弹', desc: '必定脱离战斗', cost: 120, kind: 'escape', power: 0 },
-  star_shard: { name: '星之碎片', desc: '全队复活并回满 HP/MP', cost: 40, currency: 'gem', kind: 'party_heal', power: 0 },
-  hourglass: { name: '时之沙漏', desc: '敌方本回合全部跳过', cost: 25, currency: 'gem', kind: 'stun', power: 0 },
   exp_scroll: { name: '经验卷轴', desc: '指定角色获得 500 经验', cost: 30, currency: 'gem', kind: 'exp', power: 500 },
   gold_pouch: { name: '金币袋', desc: '获得 1000 金币', cost: 20, currency: 'gem', kind: 'gold', power: 1000 }
 };
+
+// 可在旅店用金币招募的扩展职业（对应 CLASSES 中的 id，按推荐获取顺序排列）
+const RECRUITABLE = ['red_mage', 'alchemist', 'bard', 'geomancer', 'ninja', 'paladin', 'dragoon', 'summoner'];
+
+// 各扩展职业的招募费用（金币，直接购买力，非抽卡）
+const RECRUIT_COSTS = {
+  red_mage: 800,
+  alchemist: 900,
+  bard: 950,
+  geomancer: 1000,
+  ninja: 1200,
+  paladin: 1400,
+  dragoon: 1600,
+  summoner: 2000
+};
+
+// 旅店休息费用：当前持有金币的 1%，下限 1、上限 200
+const INN_REST_COST_RATE = 0.01;
+const INN_REST_COST_MIN = 1;
+const INN_REST_COST_MAX = 200;
+
+function innRestCost() {
+  const raw = Math.floor(state.gold * INN_REST_COST_RATE);
+  return Math.max(INN_REST_COST_MIN, Math.min(INN_REST_COST_MAX, raw));
+}
+
+function hasClass(id) {
+  return state.party.some((m) => m.id === id) || state.roster.some((m) => m.id === id);
+}
 
 const ENEMY_SKILLS = {
   strike: { name: '冲撞', kind: 'attack', power: 1.0 },
@@ -169,14 +347,6 @@ const AREA_POOLS = {
 };
 
 const AREAS = {
-  village: {
-    id: 'village',
-    name: '微风村',
-    type: 'town',
-    level: '安全',
-    desc: '出发前的补给点，提供商店、旅店与存档。',
-    unlock: () => true
-  },
   fire: {
     id: 'fire',
     name: '烈焰洞窟',
@@ -247,14 +417,14 @@ const BOSS_REWARDS = {
   water: { gold: 700, gems: 60, armor: 'sage_robe' },
   earth: { gold: 800, gems: 70, weapon: 'sage_staff' },
   wind: { gold: 900, gems: 80, armor: 'mythril_plate' },
-  final: { gold: 1500, gems: 150, items: { star_shard: 3 } }
+  final: { gold: 1500, gems: 150 }
 };
 
 const IAP_PACKAGES = [
-  { id: 'small', name: '小袋水晶', gems: 60, price: 6, bonus: null },
-  { id: 'large', name: '大袋水晶', gems: 300, price: 30, bonus: null },
-  { id: 'starter', name: '启程礼包', gems: 120, price: 12, bonus: { star_shard: 2, exp_scroll: 2 } },
-  { id: 'weekly', name: '周卡补给包', gems: 300, price: 30, bonus: { star_shard: 5, hi_potion: 10, phoenix: 2 } }
+  { id: 'small', name: '小袋水晶', gems: 60, price: 6 },
+  { id: 'large', name: '大袋水晶', gems: 300, price: 30 },
+  { id: 'starter', name: '启程水晶包', gems: 120, price: 12 },
+  { id: 'weekly', name: '周卡水晶包', gems: 300, price: 30 }
 ];
 
 let state = null;
@@ -266,7 +436,7 @@ let battleMenu = 'command';
 let battleTimer = null;
 let currentTab = 'map';
 let menuTab = 'party';
-let shopTab = 'gold';
+let shopTab = 'equip';
 let toastTimer = null;
 
 function clone(value) {
@@ -297,6 +467,7 @@ const ICONS = {
   trophy: '<path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/>',
   tower: '<rect x="4" y="3" width="16" height="18"/><path d="M9 3v18M15 3v18M4 9h16M4 15h16"/>',
   flask: '<path d="M10 2v6L4 18a2 2 0 0 0 1.7 3h12.6a2 2 0 0 0 1.7-3L14 8V2"/><path d="M8 2h8"/>',
+  bed: '<path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M6 10h12"/>',
   heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>',
   zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
   book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
@@ -308,7 +479,11 @@ const ICONS = {
   check: '<polyline points="20 6 9 17 4 12"/>',
   lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
   home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/>',
-  user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'
+  user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  down: '<polyline points="6 9 12 15 18 9"/>',
+  up: '<polyline points="18 15 12 9 6 15"/>',
+  'arrow-front': '<polyline points="15 18 21 12 15 6"/><line x1="3" y1="12" x2="21" y2="12"/>',
+  'arrow-back': '<polyline points="9 18 3 12 9 6"/><line x1="21" y1="12" x2="3" y2="12"/>'
 };
 
 function icon(name, size = 18) {
@@ -335,8 +510,8 @@ function shuffle(list) {
 function statsFor(member) {
   const cls = CLASSES[member.id];
   const lv = member.level - 1;
-  const weapon = WEAPONS[member.weapon] || {};
-  const armor = ARMORS[member.armor] || {};
+  const weapon = WEAPONS[weaponTypeOf(member)] || {};
+  const armor = ARMORS[armorTypeOf(member)] || {};
   return {
     maxHp: cls.hp[0] + cls.hp[1] * lv,
     maxMp: cls.mp[0] + cls.mp[1] * lv,
@@ -348,16 +523,86 @@ function statsFor(member) {
   };
 }
 
+// --------------------------------------------------------------------------
+// 装备实例模型：每件武器/防具是唯一实例（uid），同一时刻只能被一名角色装备
+// （1:1 关系）。state.weapons / state.armors 存 {uid, type} 列表，角色的
+// member.weapon / member.armor 存对应实例 uid。
+// --------------------------------------------------------------------------
+function weaponTypeOf(member) {
+  const inst = state && (state.weapons || []).find((w) => w.uid === member.weapon);
+  return inst ? inst.type : CLASSES[member.id].weapon;
+}
+
+function armorTypeOf(member) {
+  const inst = state && (state.armors || []).find((a) => a.uid === member.armor);
+  return inst ? inst.type : CLASSES[member.id].armor;
+}
+
+function nextEquipUid(slot) {
+  state.eid = (state.eid || 0) + 1;
+  return `${slot === 'weapon' ? 'w' : 'a'}${state.eid}`;
+}
+
+function addWeaponInstance(type) {
+  const inst = { uid: nextEquipUid('weapon'), type };
+  state.weapons.push(inst);
+  return inst;
+}
+
+function addArmorInstance(type) {
+  const inst = { uid: nextEquipUid('armor'), type };
+  state.armors.push(inst);
+  return inst;
+}
+
+// 某个装备实例当前被谁装备（无则 null）
+function equipOwner(slot, uid) {
+  const all = [...state.party, ...state.roster];
+  return all.find((m) => m[slot] === uid) || null;
+}
+
+// 给目标角色换装：新装备先由原主人卸下，再交给新主人（1:1 置换）
+function assignEquip(member, slot, uid) {
+  const all = [...state.party, ...state.roster];
+  const prevOwner = all.find((m) => m !== member && m[slot] === uid);
+  if (prevOwner) prevOwner[slot] = null;
+  member[slot] = uid;
+}
+
+// 角色卸下装备后，为它找一个本职业默认装备的空闲实例；找不到则留空（用裸装属性）
+function freeDefaultEquip(member, slot) {
+  const list = slot === 'weapon' ? state.weapons : state.armors;
+  const cls = CLASSES[member.id];
+  const all = [...state.party, ...state.roster];
+  const taken = new Set(all.map((m) => m[slot]));
+  const defaultType = cls[slot];
+  const inst = list.find((x) => x.type === defaultType && !taken.has(x.uid));
+  member[slot] = inst ? inst.uid : null;
+}
+
+
 function expForNext(level) {
   return Math.floor(80 * Math.pow(1.38, level - 1));
 }
 
 function defaultState() {
+  const weapons = [
+    { uid: 'w1', type: 'iron_sword' },
+    { uid: 'w2', type: 'wood_staff' },
+    { uid: 'w3', type: 'wood_staff' },
+    { uid: 'w4', type: 'knuckles' }
+  ];
+  const armors = [
+    { uid: 'a1', type: 'cloth' },
+    { uid: 'a2', type: 'cloth' },
+    { uid: 'a3', type: 'cloth' },
+    { uid: 'a4', type: 'cloth' }
+  ];
   const party = [
-    { id: 'knight', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'iron_sword', armor: 'cloth', alive: true, buff: null },
-    { id: 'priest', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'wood_staff', armor: 'cloth', alive: true, buff: null },
-    { id: 'mage', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'wood_staff', armor: 'cloth', alive: true, buff: null },
-    { id: 'monk', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'knuckles', armor: 'cloth', alive: true, buff: null }
+    { id: 'knight', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'w1', armor: 'a1', alive: true, buff: null, row: 'front' },
+    { id: 'priest', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'w2', armor: 'a2', alive: true, buff: null, row: 'front' },
+    { id: 'mage', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'w3', armor: 'a3', alive: true, buff: null, row: 'front' },
+    { id: 'monk', level: 1, exp: 0, hp: 0, mp: 0, weapon: 'w4', armor: 'a4', alive: true, buff: null, row: 'front' }
   ];
   party.forEach((member) => {
     const stats = statsFor(member);
@@ -368,26 +613,87 @@ function defaultState() {
     chapter: 1,
     gold: 150,
     gems: 120,
-    items: { potion: 3, hi_potion: 0, ether: 1, phoenix: 0, smoke: 1, star_shard: 1, hourglass: 0, exp_scroll: 0, gold_pouch: 0 },
-    weapons: ['iron_sword', 'wood_staff', 'wood_staff', 'knuckles'],
-    armors: ['cloth', 'cloth', 'cloth', 'cloth'],
+    eid: 4,
+    items: { potion: 3, hi_potion: 0, ether: 1, phoenix: 0, smoke: 1, exp_scroll: 0, gold_pouch: 0 },
+    weapons,
+    armors,
     flags: { fire: false, water: false, earth: false, wind: false, final: false },
     tower: { best: 0 },
-    party
+    party,
+    roster: []
   };
+}
+
+// 迁移/规范化装备实例列表：旧存档 weapons/armors 是类型 id 字符串数组，统一转成 {uid,type} 实例
+function normalizeEquipInstances(rawList, slot, baseList, eidRef) {
+  const out = [];
+  let maxSeq = 0;
+  if (Array.isArray(rawList)) {
+    rawList.forEach((entry, index) => {
+      let inst;
+      if (typeof entry === 'string') {
+        inst = { uid: `${slot === 'weapon' ? 'w' : 'a'}${index + 1}`, type: entry };
+      } else if (entry && typeof entry === 'object' && entry.type) {
+        inst = { uid: entry.uid || `${slot === 'weapon' ? 'w' : 'a'}${index + 1}`, type: entry.type };
+      }
+      if (inst) {
+        const seq = Number(String(inst.uid).replace(/[wa]/g, '')) || 0;
+        if (seq > maxSeq) maxSeq = seq;
+        out.push(inst);
+      }
+    });
+  }
+  if (out.length === 0) {
+    baseList.forEach((inst, index) => out.push({ uid: inst.uid, type: inst.type }));
+  }
+  if (eidRef !== undefined && eidRef !== null) {
+    const candidate = maxSeq + 1;
+    if (Number(eidRef) <= candidate) eidRef = candidate;
+  }
+  return { list: out, eid: eidRef };
+}
+
+// 规范化某角色装备：weapon/armor 指向实例 uid；若还是旧的类型 id（字符串），
+// 则找一件该类型且当前无人装备的空闲实例；找不到就新建一件（保证 1:1）
+function normalizeMemberEquip(member, weapons, armors, takenW, takenA) {
+  const pick = (list, uidOrType, taken, slot) => {
+    if (uidOrType && list.some((x) => x.uid === uidOrType)) {
+      taken.add(uidOrType);
+      return uidOrType;
+    }
+    const type = typeof uidOrType === 'string' && (WEAPONS[uidOrType] || ARMORS[uidOrType])
+      ? uidOrType
+      : CLASSES[member.id][slot];
+    const free = list.find((x) => x.type === type && !taken.has(x.uid));
+    if (free) {
+      taken.add(free.uid);
+      return free.uid;
+    }
+    const inst = { uid: `${slot === 'weapon' ? 'w' : 'a'}${list.length + 1}`, type };
+    list.push(inst);
+    taken.add(inst.uid);
+    return inst.uid;
+  };
+  member.weapon = pick(weapons, member.weapon, takenW, 'weapon');
+  member.armor = pick(armors, member.armor, takenA, 'armor');
 }
 
 function normalizeState(raw) {
   const base = defaultState();
   if (!raw) return base;
+  const weaponsNorm = normalizeEquipInstances(raw.weapons, 'weapon', base.weapons, raw.eid || 0);
+  const armorsNorm = normalizeEquipInstances(raw.armors, 'armor', base.armors, weaponsNorm.eid);
+  const weapons = weaponsNorm.list;
+  const armors = armorsNorm.list;
   const merged = {
     ...base,
     ...raw,
+    eid: armorsNorm.eid,
     items: { ...base.items, ...(raw.items || {}) },
     flags: { ...base.flags, ...(raw.flags || {}) },
     tower: { ...base.tower, ...(raw.tower || {}) },
-    weapons: Array.isArray(raw.weapons) ? raw.weapons : base.weapons,
-    armors: Array.isArray(raw.armors) ? raw.armors : base.armors,
+    weapons,
+    armors,
     party: Array.isArray(raw.party) ? raw.party.map((member) => ({ ...member, buff: null })) : base.party
   };
   merged.gold = Math.max(0, Math.floor(Number(merged.gold) || 0));
@@ -395,22 +701,40 @@ function normalizeState(raw) {
   Object.keys(merged.items).forEach((id) => {
     if (!Number.isFinite(merged.items[id]) || merged.items[id] < 0) merged.items[id] = 0;
   });
+  const takenW = new Set();
+  const takenA = new Set();
+  const normalizePartyMember = (member, index) => {
+    const fallback = base.party[index];
+    const cls = CLASSES[member.id] ? CLASSES[member.id] : CLASSES[fallback.id];
+    const normalized = { ...fallback, ...member, buff: null };
+    normalized.id = cls === CLASSES[member.id] ? member.id : fallback.id;
+    normalized.level = Math.max(1, Math.floor(Number(normalized.level) || 1));
+    normalizeMemberEquip(normalized, weapons, armors, takenW, takenA);
+    return normalized;
+  };
   merged.party = (Array.isArray(raw.party) && raw.party.length === base.party.length
-    ? raw.party.map((member, index) => {
-        const fallback = base.party[index];
-        const cls = CLASSES[member.id] ? CLASSES[member.id] : CLASSES[fallback.id];
-        const normalized = { ...fallback, ...member, buff: null };
-        normalized.id = cls === CLASSES[member.id] ? member.id : fallback.id;
-        normalized.level = Math.max(1, Math.floor(Number(normalized.level) || 1));
-        normalized.weapon = merged.weapons.includes(normalized.weapon) ? normalized.weapon : cls.weapon;
-        normalized.armor = merged.armors.includes(normalized.armor) ? normalized.armor : cls.armor;
-        const stats = statsFor(normalized);
-        normalized.hp = Number.isFinite(normalized.hp) ? Math.min(stats.maxHp, Math.max(0, normalized.hp)) : stats.maxHp;
-        normalized.mp = Number.isFinite(normalized.mp) ? Math.min(stats.maxMp, Math.max(0, normalized.mp)) : stats.maxMp;
-        normalized.alive = !!normalized.alive;
-        return normalized;
-      })
+    ? raw.party.map(normalizePartyMember)
     : base.party);
+  merged.roster = Array.isArray(raw.roster)
+    ? raw.roster.slice(0, RECRUITABLE.length).map((member) => {
+        const cls = CLASSES[member.id];
+        const fallback = cls ? { id: member.id, level: 1, exp: 0, hp: 0, mp: 0, weapon: cls.weapon, armor: cls.armor, alive: true, buff: null, row: 'front' } : null;
+        if (!fallback) return null;
+        const normalized = { ...fallback, ...member, buff: null };
+        normalizeMemberEquip(normalized, weapons, armors, takenW, takenA);
+        return normalized;
+      }).filter(Boolean)
+    : [];
+  const clamp = (member, index) => {
+    const stats = statsFor(member);
+    member.hp = Number.isFinite(member.hp) ? Math.min(stats.maxHp, Math.max(0, member.hp)) : stats.maxHp;
+    member.mp = Number.isFinite(member.mp) ? Math.min(stats.maxMp, Math.max(0, member.mp)) : stats.maxMp;
+    member.alive = !!member.alive;
+    member.row = member.row === 'back' ? 'back' : 'front';
+    return member;
+  };
+  merged.party = merged.party.map(clamp);
+  merged.roster = merged.roster.map(clamp);
   return merged;
 }
 
@@ -418,12 +742,20 @@ function addItem(id, count = 1) {
   state.items[id] = (state.items[id] || 0) + count;
 }
 
-function addWeapon(id) {
-  if (!state.weapons.includes(id)) state.weapons.push(id);
+function hasWeaponType(type) {
+  return (state.weapons || []).some((w) => w.type === type);
 }
 
-function addArmor(id) {
-  if (!state.armors.includes(id)) state.armors.push(id);
+function hasArmorType(type) {
+  return (state.armors || []).some((a) => a.type === type);
+}
+
+function addWeapon(type) {
+  if (!hasWeaponType(type)) addWeaponInstance(type);
+}
+
+function addArmor(type) {
+  if (!hasArmorType(type)) addArmorInstance(type);
 }
 
 function saveGame(announce = true) {
@@ -433,6 +765,11 @@ function saveGame(announce = true) {
   } catch (err) {
     showToast('存档失败：浏览器未开放本地存储');
   }
+}
+
+// 商业手游：任何状态变动后实时静默存档，避免意外损失进度
+function autosave() {
+  saveGame(false);
 }
 
 function loadGame() {
@@ -511,18 +848,13 @@ function openTargetPicker(title, targets, onPick) {
 }
 
 function renderHeader() {
-  $('hudGold').innerHTML = `${icon('coins', 14)}金币 ${fmt(state.gold)}`;
-  $('hudGems').innerHTML = `${icon('gem', 14)}水晶 ${fmt(state.gems)}`;
-  const location = explore ? AREAS[explore.areaId].name : towerRun ? '永恒回廊' : '微风村';
-  $('hudLocation').innerHTML = `${icon('map', 14)}${location}`;
-  $('hudFloor').innerHTML = towerRun ? `${icon('tower', 14)}第 ${towerRun.floor} 层` : state.tower.best > 0 ? `${icon('trophy', 14)}回廊 ${state.tower.best} 层` : '';
-  $('saveBtn').disabled = !!battle && !battle.over;
-  $('saveBtn').innerHTML = `${icon('save', 15)}存档`;
+  $('hudGold').textContent = fmt(state.gold);
+  $('hudGems').textContent = fmt(state.gems);
 }
 
 function renderObjective() {
   let text = '';
-  if (!state.flags.fire) text = '前往烈焰洞窟，取回火焰水晶。先到微风村补给。';
+  if (!state.flags.fire) text = '前往烈焰洞窟，取回火焰水晶。';
   else if (!state.flags.water) text = '火焰水晶已点亮。前往碧水神殿恢复水之平衡。';
   else if (!state.flags.earth) text = '水之守护已解放。前往黄土遗迹唤醒大地之力。';
   else if (!state.flags.wind) text = '大地意志苏醒。前往疾风之塔平定风暴。';
@@ -540,7 +872,7 @@ function renderPartyList() {
     return `<div class="party-card ${member.alive ? '' : 'dead'}">
       ${partySprite(member.id)}
       <div>
-        <div class="pc-name">${cls.name}</div>
+        <div class="pc-name"><span class="mini-row ${member.row}">${member.row === 'front' ? '前' : '后'}</span>${cls.name}</div>
         <div class="pc-job">${cls.job}</div>
         <div class="pc-level">Lv.${member.level}</div>
         <div class="mini-bar"><i style="width:${hpPct}%"></i></div>
@@ -554,11 +886,6 @@ function renderAll() {
   renderHeader();
   renderObjective();
   renderPartyList();
-  document.querySelectorAll('[data-tab]').forEach((button) => {
-    button.innerHTML = button.dataset.tab === 'map'
-      ? `${icon('map', 16)}冒险`
-      : `${icon('menu', 16)}菜单`;
-  });
   renderMapView();
   renderMenuView();
 }
@@ -567,14 +894,15 @@ function setMainTab(tab) {
   currentTab = tab;
   document.querySelectorAll('[data-tab]').forEach((button) => {
     button.classList.toggle('active', button.dataset.tab === tab);
-    button.innerHTML = button.dataset.tab === 'map'
-      ? `${icon('map', 16)}冒险`
-      : `${icon('menu', 16)}菜单`;
   });
-  $('mapView').classList.toggle('hidden', tab !== 'map');
-  $('menuView').classList.toggle('hidden', tab !== 'menu');
+  const views = ['map', 'menu', 'shop', 'inn'];
+  views.forEach((view) => {
+    $(`${view}View`).classList.toggle('hidden', tab !== view);
+  });
   if (tab === 'map') renderMapView();
-  else renderMenuView();
+  else if (tab === 'menu') renderMenuView();
+  else if (tab === 'shop') renderShopView();
+  else if (tab === 'inn') renderInnView();
 }
 
 function renderMapView() {
@@ -588,7 +916,6 @@ function renderMapView() {
 }
 
 function areaStatus(area) {
-  if (area.id === 'village') return { label: '安全区', cls: '' };
   if (state.flags[area.id]) return { label: '已讨伐', cls: 'cleared' };
   if (!area.unlock()) return { label: '未解锁', cls: 'locked' };
   return { label: '可探索', cls: '' };
@@ -599,15 +926,11 @@ function renderAreaList() {
     const status = areaStatus(area);
     const locked = status.cls === 'locked';
     const cleared = status.cls === 'cleared';
-    const areaIcon = area.type === 'town' ? 'home' : area.type === 'tower' ? 'tower' : 'map';
+    const areaIcon = area.type === 'tower' ? 'tower' : 'map';
     const statusIcon = locked ? 'lock' : cleared ? 'check' : 'target';
-    const actions = area.type === 'town'
-      ? `<button data-area-action="shop">${icon('shop', 15)}进入商店</button>
-         <button data-area-action="inn">${icon('heart', 15)}旅店住宿 50</button>
-         <button data-area-action="save">${icon('save', 15)}存档</button>`
-      : area.type === 'tower'
-        ? `<button data-area-action="tower" ${locked ? 'disabled' : ''}>${icon(locked ? 'lock' : 'tower', 15)}${locked ? '未解锁' : '进入回廊'}</button>`
-        : `<button data-area-action="explore" data-area="${area.id}" ${locked ? 'disabled' : ''}>${icon(locked ? 'lock' : cleared ? 'refresh' : 'play', 15)}${locked ? '未解锁' : cleared ? '再探索' : '开始探索'}</button>`;
+    const actions = area.type === 'tower'
+      ? `<button data-area-action="tower" ${locked ? 'disabled' : ''}>${icon(locked ? 'lock' : 'tower', 15)}${locked ? '未解锁' : '进入回廊'}</button>`
+      : `<button data-area-action="explore" data-area="${area.id}" ${locked ? 'disabled' : ''}>${icon(locked ? 'lock' : cleared ? 'refresh' : 'play', 15)}${locked ? '未解锁' : cleared ? '再探索' : '开始探索'}</button>`;
     return `<div class="area-card ${status.cls}">
       <div class="area-card-top">
         <div class="area-icon">${icon(areaIcon, 22)}</div>
@@ -718,6 +1041,7 @@ function resolveExploreEvent() {
   }
   renderHeader();
   renderMapView();
+  autosave();
 }
 
 function continueExplore() {
@@ -726,6 +1050,7 @@ function continueExplore() {
     explore = null;
     renderHeader();
     renderMapView();
+    autosave();
     showToast('区域探索完成');
   } else {
     renderMapView();
@@ -808,11 +1133,17 @@ function makePartyCombatant(member, index) {
     alive: member.alive,
     defending: false,
     buff: null,
-    weapon: member.weapon,
-    armor: member.armor,
+    weapon: weaponTypeOf(member),
+    armor: armorTypeOf(member),
     skills: CLASSES[member.id].skills.slice(),
-    sprite: member.id
+    sprite: member.id,
+    row: member.row === 'back' ? 'back' : 'front'
   };
+}
+
+function isRanged(job, weaponId) {
+  const weapon = WEAPONS[weaponId];
+  return !!(weapon && weapon.ranged);
 }
 
 function makeEnemyCombatant(enemyId, index, scale, boss = false) {
@@ -854,7 +1185,6 @@ function startBattle(enemyList, options = {}) {
     waiting: false,
     current: null,
     victory: null,
-    enemyStun: false,
     tower: !!options.tower,
     towerFloor: options.towerFloor || null,
     towerBoss: !!options.towerBoss,
@@ -884,17 +1214,10 @@ function advanceBattle() {
     battle.turn++;
     battle.index = 0;
     battle.order = buildOrder();
-    battle.enemyStun = false;
   }
   while (battle.index < battle.order.length) {
     const actor = battle.order[battle.index];
     if (!actor.alive || actor.hp <= 0) {
-      battle.index++;
-      continue;
-    }
-    if (battle.enemyStun && actor.side === 'enemy') {
-      battle.enemyStun = false;
-      addBattleLog(`${actor.name} 被时之沙漏定住，跳过行动。`, 'system');
       battle.index++;
       continue;
     }
@@ -957,7 +1280,7 @@ function resolveActorAction(actor, action, targetKey) {
     const target = targetKey ? findCombatant(targetKey) : battle.enemies.find((e) => e.alive && e.hp > 0);
     if (!target) return ['没有可攻击的目标。'];
     const result = dealDamage(actor, target, 1.0, 'phys');
-    lines.push(`${actor.name} 攻击 ${target.name}，造成 ${result.damage} 点伤害${result.crit ? '，暴击！' : ''}。`);
+    lines.push(`${actor.name} 攻击 ${target.name}，造成 ${result.damage} 点伤害${result.crit ? '，暴击！' : ''}${result.note || ''}。`);
   } else if (action.kind === 'skill') {
     const skill = actor.side === 'enemy' ? ENEMY_SKILLS[action.skillId] : SKILLS[action.skillId];
     if (actor.side === 'player' && actor.mp < skill.cost) return ['MP 不足。'];
@@ -966,7 +1289,7 @@ function resolveActorAction(actor, action, targetKey) {
       const target = targetKey ? findCombatant(targetKey) : battle.enemies.find((e) => e.alive && e.hp > 0);
       if (!target) return ['没有可攻击的目标。'];
       const result = dealDamage(actor, target, skill.power, 'phys', skill.id === 'punch' ? 0.5 : 0);
-      lines.push(`${actor.name} 使用 ${skill.name}，对 ${target.name} 造成 ${result.damage} 点伤害${result.crit ? '，暴击！' : ''}。`);
+      lines.push(`${actor.name} 使用 ${skill.name}，对 ${target.name} 造成 ${result.damage} 点伤害${result.crit ? '，暴击！' : ''}${result.note || ''}。`);
     } else if (skill.kind === 'magic') {
       const target = targetKey ? findCombatant(targetKey) : battle.enemies.find((e) => e.alive && e.hp > 0);
       if (!target) return ['没有可攻击的目标。'];
@@ -1029,6 +1352,19 @@ function dealDamage(actor, target, power, kind, ignoreDef = 0) {
     base *= actor.buff.power;
     actor.buff = null;
   }
+  let rowNote = '';
+  if (kind !== 'magic') {
+    // 后排物理攻击惩罚（远程武器除外）
+    if (actor.row === 'back' && !isRanged(actor.job, actor.weapon)) {
+      base *= 0.6;
+      rowNote = '（后排近战出力受限）';
+    }
+    // 后排物理减伤
+    if (target.row === 'back') {
+      base *= 0.7;
+      if (!rowNote) rowNote = '（后排减伤）';
+    }
+  }
   const crit = kind === 'phys' && chance(0.12);
   let damage = Math.max(1, Math.floor((base - resist) * (0.9 + Math.random() * 0.2)));
   if (target.defending) {
@@ -1037,7 +1373,7 @@ function dealDamage(actor, target, power, kind, ignoreDef = 0) {
   }
   if (crit) damage = Math.floor(damage * 1.6);
   target.hp = Math.max(0, target.hp - damage);
-  return { damage, crit };
+  return { damage, crit, note: rowNote };
 }
 
 function findCombatant(key) {
@@ -1054,22 +1390,6 @@ function resolveItem(actor, itemId, targetKey) {
     battle.victory = { title: '脱离战斗', lines: ['使用烟雾弹成功脱离战斗。'], next: [{ label: '返回', action: 'continue' }] };
     lines.push('使用烟雾弹成功脱离战斗。');
     renderBattle();
-    return lines;
-  }
-  if (item.kind === 'stun') {
-    state.items[itemId]--;
-    battle.enemyStun = true;
-    lines.push('使用时之沙漏，敌方本回合被定住。');
-    return lines;
-  }
-  if (item.kind === 'party_heal') {
-    state.items[itemId]--;
-    battle.party.forEach((member) => {
-      member.alive = true;
-      member.hp = member.maxHp;
-      member.mp = member.maxMp;
-    });
-    lines.push('使用星之碎片，全队复活并回满。');
     return lines;
   }
   const target = findCombatant(targetKey);
@@ -1197,8 +1517,7 @@ function finishVictory() {
     lines.push(`永恒回廊最高纪录更新至 ${state.tower.best} 层。`);
     if (battle.towerBoss) {
       state.gems += 20;
-      addItem('star_shard', 1);
-      lines.push('首领层奖励：20 水晶、星之碎片 ×1。');
+      lines.push('首领层奖励：20 水晶。');
     }
   }
   const next = battle.tower
@@ -1211,6 +1530,7 @@ function finishVictory() {
 
 function finishDefeat() {
   syncPartyFromBattle();
+  autosave();
   battle.victory = { title: '全灭', lines: ['队伍全灭，冒险中断。'], next: [] };
   goto('screen-gameover');
 }
@@ -1302,7 +1622,7 @@ function renderBattleCommand() {
     return;
   }
   if (battleMenu === 'item') {
-    const usable = Object.entries(state.items).filter(([id, count]) => count > 0 && ['heal', 'ether', 'revive', 'escape', 'party_heal', 'stun'].includes(ITEMS[id].kind));
+    const usable = Object.entries(state.items).filter(([id, count]) => count > 0 && ['heal', 'ether', 'revive', 'escape'].includes(ITEMS[id].kind));
     $('battleCommand').innerHTML = `<p class="command-label">${icon('backpack', 15)}${actor.name} · 选择道具</p>
       <div class="skill-grid">${usable.map(([id, count]) => `<button data-battle-action="item" data-item-id="${id}">${icon('package', 16)}<span>${ITEMS[id].name}</span><span class="skill-cost">持有 ${count} · ${ITEMS[id].desc}</span></button>`).join('')}
       </div>
@@ -1316,8 +1636,8 @@ function renderBattleCommand() {
       <button data-battle-action="open-item">${icon('backpack', 17)}道具</button>
       <button data-battle-action="defend">${icon('shield', 17)}防御</button>
       <button data-battle-action="flee">${icon('play', 17)}逃跑</button>
-    </div>`;
-}
+</div>`;
+  }
 
 function setBattleAction(action) {
   battleAction = action;
@@ -1364,27 +1684,50 @@ function renderMenuView() {
   $('menuView').innerHTML = `<div class="menu-subtabs">
       <button class="tab ${menuTab === 'party' ? 'active' : ''}" data-menu-tab="party">${icon('users', 16)}队伍</button>
       <button class="tab ${menuTab === 'items' ? 'active' : ''}" data-menu-tab="items">${icon('backpack', 16)}道具</button>
+      <button class="tab ${menuTab === 'equip' ? 'active' : ''}" data-menu-tab="equip">${icon('sword', 16)}装备</button>
     </div>
     <div id="menuContent"></div>`;
   if (menuTab === 'party') renderPartyMenu();
-  else renderItemsMenu();
+  else if (menuTab === 'items') renderItemsMenu();
+  else renderEquipmentMenu();
 }
 
 function renderPartyMenu() {
   const content = $('menuContent');
-  content.innerHTML = `<div class="party-menu">${state.party.map((member, index) => {
-    const cls = CLASSES[member.id];
-    const stats = statsFor(member);
-    const weaponOptions = state.weapons.map((id) => {
-      const weapon = WEAPONS[id];
-      const compatible = weapon.jobs.includes(member.id);
-      return `<option value="${id}" ${member.weapon === id ? 'selected' : ''} ${compatible ? '' : 'disabled'}>${weapon.name}${compatible ? '' : '（不可用）'}</option>`;
-    }).join('');
-    const armorOptions = state.armors.map((id) => `<option value="${id}" ${member.armor === id ? 'selected' : ''}>${ARMORS[id].name}</option>`).join('');
-    return `<div class="member-card ${member.alive ? '' : 'dead'}">
+  const MAX_PARTY = 4;
+  const hint = `<p class="formation-hint">${icon('target', 13)}出战上限 ${MAX_PARTY} 人。前排近战正常输出；后排近战伤害与所受物理伤害降低，远程武器与魔法不受后排影响。</p>`;
+  const partyHtml = state.party.length
+    ? `<h4 class="formation-title">${icon('users', 14)}出战阵容</h4><div class="party-menu">${state.party.map((member, index) => memberCard(member, index, 'party')).join('')}</div>`
+    : '';
+  const rosterHtml = state.roster.length
+    ? `<h4 class="formation-title">${icon('backpack', 14)}后备阵容</h4><div class="party-menu">${state.roster.map((member, index) => memberCard(member, index, 'roster')).join('')}</div>`
+    : '';
+  content.innerHTML = `${hint}${partyHtml}${rosterHtml}`;
+}
+
+function memberCard(member, index, pool) {
+  const cls = CLASSES[member.id];
+  const stats = statsFor(member);
+  const deployed = pool === 'party';
+  const rowBadge = deployed
+    ? `<span class="row-badge ${member.row}">${member.row === 'front' ? '前排' : '后排'}</span>`
+    : `<span class="row-badge bench">后备</span>`;
+  const rowActions = deployed
+    ? `<button data-formation="row" data-pool="${pool}" data-index="${index}" data-row="${member.row === 'front' ? 'back' : 'front'}" class="mini-btn">${icon(member.row === 'front' ? 'arrow-back' : 'arrow-front', 13)}${member.row === 'front' ? '转到后排' : '转至前排'}</button>`
+    : '';
+  const weaponType = weaponTypeOf(member);
+  const armorType = armorTypeOf(member);
+  const weaponName = WEAPONS[weaponType] ? WEAPONS[weaponType].name : '未装备';
+  const armorName = ARMORS[armorType] ? ARMORS[armorType].name : '未装备';
+  const weaponInfo = WEAPONS[weaponType] ? `攻击+${WEAPONS[weaponType].power}${WEAPONS[weaponType].mag ? ` · 魔力+${WEAPONS[weaponType].mag}` : ''}` : '';
+  const armorInfo = ARMORS[armorType] ? `防御+${ARMORS[armorType].def}${ARMORS[armorType].mag ? ` · 魔力+${ARMORS[armorType].mag}` : ''}` : '';
+  return `<div class="member-card ${member.alive ? '' : 'dead'}">
       <div class="member-head">
         ${partySprite(member.id)}
-        <div><h3>${cls.name}</h3><p>${cls.job} · Lv.${member.level}${member.alive ? '' : ' · 倒下'}</p></div>
+        <div>
+          <div class="member-name-row"><h3>${cls.name}</h3>${rowBadge}</div>
+          <p>${cls.job} · Lv.${member.level}${member.alive ? '' : ' · 倒下'}</p>
+        </div>
       </div>
       <div class="stat-grid">
         <div class="stat-box">HP<b>${member.hp}/${stats.maxHp}</b></div>
@@ -1397,15 +1740,80 @@ function renderPartyMenu() {
         <div class="stat-box">精神<b>${stats.spr}</b></div>
         <div class="stat-box">技能<b>${cls.skills.map((id) => SKILLS[id].name).join('/')}</b></div>
       </div>
-      <div class="equip-row"><label>武器</label><select data-equip="weapon" data-index="${index}">${weaponOptions}</select></div>
-      <div class="equip-row"><label>防具</label><select data-equip="armor" data-index="${index}">${armorOptions}</select></div>
+      <div class="formation-actions">
+        ${rowActions}
+        <button data-formation="${deployed ? 'bench' : 'deploy'}" data-pool="${pool}" data-index="${index}" class="mini-btn ${deployed ? 'danger' : ''}">${icon(deployed ? 'down' : 'up', 13)}${deployed ? '下阵' : '上阵'}</button>
+      </div>
+      <div class="equip-rows">
+        <button class="equip-btn" data-open-equip="weapon" data-pool="${pool}" data-index="${index}">
+          <span class="equip-label">${icon('sword', 13)}武器</span>
+          <span class="equip-value">${weaponName}</span>
+          <span class="equip-info">${weaponInfo}</span>
+          <span class="equip-change">更换</span>
+        </button>
+        <button class="equip-btn" data-open-equip="armor" data-pool="${pool}" data-index="${index}">
+          <span class="equip-label">${icon('shield', 13)}防具</span>
+          <span class="equip-value">${armorName}</span>
+          <span class="equip-info">${armorInfo}</span>
+          <span class="equip-change">更换</span>
+        </button>
+      </div>
     </div>`;
-  }).join('')}</div>`;
+}
+
+// 装备换装弹窗：商业手游风格——网格卡片展示所有实例，每件标注当前持有者/状态。
+// 点击某张卡即给当前角色换装（若该件正被其他人装备，则自动置换，保持 1:1）。
+function openEquipModal(pool, slot, index) {
+  const members = pool === 'roster' ? state.roster : state.party;
+  const member = members[index];
+  if (!member) return;
+  const cls = CLASSES[member.id];
+  const isWeapon = slot === 'weapon';
+  const instances = isWeapon ? state.weapons : state.armors;
+  const table = isWeapon ? WEAPONS : ARMORS;
+  const list = instances.map((inst) => {
+    const item = table[inst.type];
+    if (!item) return null;
+    const compatible = !isWeapon || item.jobs.includes(member.id);
+    const equipped = member[slot] === inst.uid;
+    const owner = equipOwner(slot, inst.uid);
+    const ownerLabel = equipped ? '当前装备' : owner ? `由 ${CLASSES[owner.id].name} 装备` : '未装备';
+    const info = isWeapon
+      ? `攻击+${item.power}${item.mag ? ` · 魔力+${item.mag}` : ''}${item.ranged ? ' · 远程' : ''}`
+      : `防御+${item.def}${item.mag ? ` · 魔力+${item.mag}` : ''}`;
+    const locked = !compatible;
+    return `<button class="equip-option ${equipped ? 'equipped' : ''} ${locked ? 'locked' : ''}" data-equip-option="${slot}" data-pool="${pool}" data-index="${index}" data-uid="${inst.uid}" ${locked ? 'disabled' : ''}>
+      <span class="eq-name">${item.name}${equipped ? ' ' + icon('check', 13) : ''}</span>
+      <span class="eq-info">${info}</span>
+      <span class="eq-state ${equipped ? 'on' : owner ? 'other' : 'free'}">${ownerLabel}</span>
+    </button>`;
+  }).filter(Boolean).join('');
+  const currentName = isWeapon
+    ? (WEAPONS[weaponTypeOf(member)] ? WEAPONS[weaponTypeOf(member)].name : '未装备')
+    : (ARMORS[armorTypeOf(member)] ? ARMORS[armorTypeOf(member)].name : '未装备');
+  const body = `<p class="equip-modal-hint">${cls.name} · 当前${isWeapon ? '武器' : '防具'}：${currentName}。点击卡片换装（一件装备同一时刻只能给一名角色使用）。</p>
+    <div class="equip-option-grid">${list || '<p class="dim-empty">还没有可用的装备，去商店购买吧。</p>'}</div>`;
+  openModal(isWeapon ? '更换武器' : '更换防具', body, [{ label: '取消' }]);
+}
+
+function equipOptionListener(event) {
+  const btn = event.target.closest('[data-equip-option]');
+  if (!btn || btn.disabled) return;
+  const pool = btn.dataset.pool === 'roster' ? state.roster : state.party;
+  const member = pool[Number(btn.dataset.index)];
+  if (!member) return;
+  assignEquip(member, btn.dataset.equipOption, btn.dataset.uid);
+  closeModal();
+  renderMenuView();
+  renderHeader();
+  renderPartyList();
+  autosave();
+  showToast('装备已更换');
 }
 
 function renderItemsMenu() {
   const content = $('menuContent');
-  const itemIcons = { heal: 'heart', ether: 'zap', revive: 'refresh', escape: 'play', party_heal: 'star', stun: 'target', exp: 'book', gold: 'coins' };
+  const itemIcons = { heal: 'heart', ether: 'zap', revive: 'refresh', escape: 'play', exp: 'book', gold: 'coins' };
   content.innerHTML = `<div class="item-list">${Object.entries(ITEMS).map(([id, item]) => {
     const count = state.items[id] || 0;
     return `<div class="item-card">
@@ -1419,6 +1827,64 @@ function renderItemsMenu() {
   }).join('')}</div>`;
 }
 
+// 装备分页：展示所有已持有的装备实例（每件 1:1 标注持有者），点击某件可给队员换装
+function renderEquipmentMenu() {
+  const content = $('menuContent');
+  const allMembers = [...state.party, ...state.roster];
+  const renderCard = (inst, slot) => {
+    const table = slot === 'weapon' ? WEAPONS : ARMORS;
+    const item = table[inst.type];
+    if (!item) return '';
+    const owner = equipOwner(slot, inst.uid);
+    const ownerLabel = owner ? `由 ${CLASSES[owner.id].name} 装备` : '未装备';
+    const info = slot === 'weapon'
+      ? `攻击+${item.power}${item.mag ? ` · 魔力+${item.mag}` : ''}${item.ranged ? ' · 远程' : ''}`
+      : `防御+${item.def}${item.mag ? ` · 魔力+${item.mag}` : ''}`;
+    const jobLabel = slot === 'weapon' ? item.jobs.map((jid) => CLASSES[jid].job).join('/') : '全体职业';
+    return `<div class="equip-card ${owner ? '' : 'free'}">
+      <div class="equip-card-head">
+        <div class="product-icon">${icon(slot === 'weapon' ? 'sword' : 'shield', 18)}</div>
+        <h3><span>${item.name}</span><span class="count ${owner ? '' : 'free-count'}">${ownerLabel}</span></h3>
+      </div>
+      <p>${info} · 适用 ${jobLabel}</p>
+      <button data-equip-target="${slot}:${inst.uid}">${icon('sword', 15)}换装</button>
+    </div>`;
+  };
+  const weaponsHtml = state.weapons.length ? `<h4 class="formation-title">${icon('sword', 14)}武器</h4><div class="product-grid">${state.weapons.map((inst) => renderCard(inst, 'weapon')).join('')}</div>` : '';
+  const armorsHtml = state.armors.length ? `<h4 class="formation-title">${icon('shield', 14)}防具</h4><div class="product-grid">${state.armors.map((inst) => renderCard(inst, 'armor')).join('')}</div>` : '';
+  content.innerHTML = `<p class="formation-hint">${icon('sword', 13)}已持有的装备一览（每件装备同一时刻只能给一名角色使用）。点击「换装」选择要装备它的队员。</p>${weaponsHtml}${armorsHtml}`;
+}
+
+function equipTargetPicker(slot, uid) {
+  const table = slot === 'weapon' ? WEAPONS : ARMORS;
+  const inst = (slot === 'weapon' ? state.weapons : state.armors).find((x) => x.uid === uid);
+  if (!inst) return;
+  const item = table[inst.type];
+  const candidates = [...state.party.map((m, i) => ({ m, i, pool: 'party' })), ...state.roster.map((m, i) => ({ m, i, pool: 'roster' }))]
+    .filter(({ m }) => slot === 'armor' || item.jobs.includes(m.id));
+  if (!candidates.length) {
+    showToast('当前没有可装备该装备的队员');
+    return;
+  }
+  openModal(`换装 · ${item.name}`, `<p>选择要装备该${slot === 'weapon' ? '武器' : '防具'}的队员。</p><div class="target-grid">${candidates.map(({ m, i, pool }, idx) => `
+    <button class="target-card ${m.alive ? '' : 'dead'}" data-equip-target-index="${idx}">
+      <b>${CLASSES[m.id].name}</b><br><span>${CLASSES[m.id].job} · ${pool === 'party' ? (m.row === 'front' ? '前排' : '后排') : '后备'}${m[slot] === uid ? ' · 已装备' : ''}</span>
+    </button>`).join('')}
+  </div>`, [{ label: '取消' }]);
+  $('modalRoot').querySelectorAll('[data-equip-target-index]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const { m } = candidates[Number(card.dataset.equipTargetIndex)];
+      assignEquip(m, slot, uid);
+      closeModal();
+      renderMenuView();
+      renderHeader();
+      renderPartyList();
+      autosave();
+      showToast(`${CLASSES[m.id].name} 已装备 ${item.name}`);
+    });
+  });
+}
+
 function validMenuTarget(member, item) {
   if (item.kind === 'revive') return !member.alive;
   const stats = statsFor(member);
@@ -1430,22 +1896,11 @@ function validMenuTarget(member, item) {
 function useItemInMenu(itemId) {
   const item = ITEMS[itemId];
   if (state.items[itemId] <= 0) return;
-  if (item.kind === 'party_heal') {
-    state.items[itemId]--;
-    state.party.forEach((member) => {
-      member.alive = true;
-      const stats = statsFor(member);
-      member.hp = stats.maxHp;
-      member.mp = stats.maxMp;
-    });
-    renderAll();
-    showToast('全队已复活并回满');
-    return;
-  }
   if (item.kind === 'gold') {
     state.items[itemId]--;
     state.gold += item.power;
     renderAll();
+    autosave();
     showToast(`获得 ${item.power} 金币`);
     return;
   }
@@ -1464,6 +1919,7 @@ function useItemInMenu(itemId) {
       const lines = gainExpForMember(member, item.power);
       lines.forEach((line) => showToast(line));
       renderAll();
+      autosave();
       showToast(`${CLASSES[member.id].name} 获得 ${item.power} 经验`);
     });
     return;
@@ -1491,29 +1947,45 @@ function useItemInMenu(itemId) {
       member.hp = Math.max(1, Math.floor(statsFor(member).maxHp * item.power));
     }
     renderAll();
+    autosave();
     showToast(`已对 ${CLASSES[member.id].name} 使用 ${item.name}`);
   });
 }
 
-function openShop(tab = 'gold') {
+function openShop(tab = 'equip') {
   shopTab = tab;
-  goto('screen-shop');
+  currentTab = 'shop';
+  renderShopView();
+  document.querySelectorAll('[data-tab]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.tab === 'shop');
+  });
+}
+
+function renderShopView() {
+  $('shopView').innerHTML = `
+    <div class="shop-tabs">
+      <button class="tab" data-shop-tab="equip">${icon('sword', 14)}装备商店</button>
+      <button class="tab" data-shop-tab="item">${icon('backpack', 14)}道具商店</button>
+      <button class="tab" data-shop-tab="crystal">${icon('gem', 14)}水晶商店</button>
+      <button class="tab" data-shop-tab="iap">${icon('star', 14)}内购商店</button>
+    </div>
+    <div id="shopBody"></div>`;
   renderShop();
 }
 
 function renderShop() {
-  $('shopGold').innerHTML = `${icon('coins', 14)}金币 ${fmt(state.gold)}`;
-  $('shopGems').innerHTML = `${icon('gem', 14)}水晶 ${fmt(state.gems)}`;
-  $('shopBackBtn').innerHTML = `${icon('arrow-right', 15)}返回地图`;
   document.querySelectorAll('[data-shop-tab]').forEach((button) => {
     button.classList.toggle('active', button.dataset.shopTab === shopTab);
-    button.innerHTML = button.dataset.shopTab === 'gold'
-      ? `${icon('coins', 16)}金币商店`
-      : `${icon('gem', 16)}水晶商店`;
   });
-  if (shopTab === 'gold') {
-    const goldItems = Object.entries(ITEMS).filter(([, item]) => !item.currency);
-    const itemIcons = { heal: 'heart', ether: 'zap', revive: 'refresh', escape: 'play', party_heal: 'star', stun: 'target', exp: 'book', gold: 'coins' };
+  const body = $('shopBody');
+  if (!body) return;
+  body.innerHTML = '';
+  const itemIcons = { heal: 'heart', ether: 'zap', revive: 'refresh', escape: 'play', exp: 'book', gold: 'coins' };
+  const section = (title, cards) => `<h2 class="shop-section-title">${title}</h2><div class="product-grid">${cards}</div>`;
+  const weaponId = (weapon) => Object.keys(WEAPONS).find((id) => WEAPONS[id] === weapon);
+  const armorId = (armor) => Object.keys(ARMORS).find((id) => ARMORS[id] === armor);
+
+  if (shopTab === 'equip') {
     const weaponCards = Object.values(WEAPONS).map((weapon) => `
       <div class="product-card">
         <div class="product-head">
@@ -1522,7 +1994,7 @@ function renderShop() {
           <span class="price">${fmt(weapon.cost)} 金币</span>
         </div>
         <p>${weapon.desc} · 适用 ${weapon.jobs.map((id) => CLASSES[id].job).join('/')}</p>
-        <button data-buy="weapon:${Object.keys(WEAPONS).find((id) => WEAPONS[id] === weapon)}" ${state.weapons.includes(Object.keys(WEAPONS).find((id) => WEAPONS[id] === weapon)) ? 'disabled' : ''}>${icon('shop', 15)}购买</button>
+        <button data-buy="weapon:${weaponId(weapon)}" ${hasWeaponType(weaponId(weapon)) ? 'disabled' : ''}>${icon('shop', 15)}${hasWeaponType(weaponId(weapon)) ? '已拥有' : '购买'}</button>
       </div>`).join('');
     const armorCards = Object.values(ARMORS).map((armor) => `
       <div class="product-card">
@@ -1532,50 +2004,56 @@ function renderShop() {
           <span class="price">${fmt(armor.cost)} 金币</span>
         </div>
         <p>${armor.desc} · 防御 +${armor.def}${armor.mag ? ` · 魔力 +${armor.mag}` : ''}</p>
-        <button data-buy="armor:${Object.keys(ARMORS).find((id) => ARMORS[id] === armor)}" ${state.armors.includes(Object.keys(ARMORS).find((id) => ARMORS[id] === armor)) ? 'disabled' : ''}>${icon('shop', 15)}购买</button>
+        <button data-buy="armor:${armorId(armor)}" ${hasArmorType(armorId(armor)) ? 'disabled' : ''}>${icon('shop', 15)}${hasArmorType(armorId(armor)) ? '已拥有' : '购买'}</button>
       </div>`).join('');
-    $('shopContent').innerHTML = `<h2 class="shop-section-title">消耗品</h2>
-      <div class="product-grid">${goldItems.map(([id, item]) => `
-        <div class="product-card">
-          <div class="product-head">
-            <div class="product-icon">${icon(itemIcons[item.kind] || 'package', 20)}</div>
-            <h3><span>${item.name}</span></h3>
-            <span class="price">${fmt(item.cost)} 金币</span>
-          </div>
-          <p>${item.desc}</p>
-          <button data-buy="item:${id}">${icon('shop', 15)}购买</button>
-        </div>`).join('')}
-      </div>
-      <h2 class="shop-section-title">装备</h2>
-      <div class="product-grid">${weaponCards}${armorCards}</div>`;
-  } else {
-    const packages = IAP_PACKAGES.map((pkg) => `
-      <div class="product-card iap-package">
-        <div class="product-head">
-          <div class="product-icon">${icon('gem', 20)}</div>
-          <h3><span>${pkg.name}</span></h3>
-          <span class="price">¥${pkg.price}</span>
-        </div>
-        <p>获得 ${pkg.gems} 水晶${pkg.bonus ? '，并附赠礼包内容。' : ''}</p>
-        ${pkg.bonus ? `<div class="iap-bonus">${Object.entries(pkg.bonus).map(([id, count]) => `${ITEMS[id].name} ×${count}`).join('、')}</div>` : ''}
-        <button data-buy-iap="${pkg.id}">${icon('gem', 15)}演示购买</button>
-      </div>`).join('');
-    const gemItems = Object.entries(ITEMS).filter(([, item]) => item.currency);
-    $('shopContent').innerHTML = `<h2 class="shop-section-title">水晶礼包</h2>
-      <div class="product-grid">${packages}</div>
-      <h2 class="shop-section-title">专属道具</h2>
-      <div class="product-grid">${gemItems.map(([id, item]) => `
-        <div class="product-card">
-          <div class="product-head">
-            <div class="product-icon">${icon('star', 20)}</div>
-            <h3><span>${item.name}</span></h3>
-            <span class="price gems">${item.cost} 水晶</span>
-          </div>
-          <p>${item.desc}</p>
-          <button data-buy="item:${id}" ${state.gems < item.cost ? 'disabled' : ''}>${icon('shop', 15)}购买</button>
-        </div>`).join('')}
-      </div>`;
+    body.innerHTML = `<p class="formation-hint">${icon('sword', 13)}每件装备购买后是唯一实例，同一时刻只能被一名角色装备，可在「队伍 → 装备」页自由换装。</p>${section('武器', weaponCards)}${section('防具', armorCards)}`;
+    return;
   }
+
+  if (shopTab === 'item') {
+    const goldItems = Object.entries(ITEMS).filter(([, item]) => !item.currency);
+    const cards = goldItems.map(([id, item]) => `
+      <div class="product-card">
+        <div class="product-head">
+          <div class="product-icon">${icon(itemIcons[item.kind] || 'package', 20)}</div>
+          <h3><span>${item.name}</span></h3>
+          <span class="price">${fmt(item.cost)} 金币</span>
+        </div>
+        <p>${item.desc}</p>
+        <button data-buy="item:${id}">${icon('shop', 15)}购买</button>
+      </div>`).join('');
+    body.innerHTML = `<p class="formation-hint">${icon('backpack', 13)}消耗品与恢复道具，购买后计入背包，可在「队伍 → 道具」或战斗中直接使用。</p>${section('恢复与战术道具', cards)}`;
+    return;
+  }
+
+  if (shopTab === 'crystal') {
+    const gemItems = Object.entries(ITEMS).filter(([, item]) => item.currency);
+    const cards = gemItems.map(([id, item]) => `
+      <div class="product-card">
+        <div class="product-head">
+          <div class="product-icon">${icon('star', 20)}</div>
+          <h3><span>${item.name}</span></h3>
+          <span class="price gems">${item.cost} 水晶</span>
+        </div>
+        <p>${item.desc}</p>
+        <button data-buy="item:${id}" ${state.gems < item.cost ? 'disabled' : ''}>${icon('shop', 15)}购买</button>
+      </div>`).join('');
+    body.innerHTML = `<p class="formation-hint">${icon('gem', 13)}使用水晶购买专属道具，可在「队伍 → 道具」查看并使用。</p>${section('水晶专属道具', cards)}`;
+    return;
+  }
+
+  // 内购商店
+  const packages = IAP_PACKAGES.map((pkg) => `
+    <div class="product-card iap-package">
+      <div class="product-head">
+        <div class="product-icon">${icon('gem', 20)}</div>
+        <h3><span>${pkg.name}</span></h3>
+        <span class="price">¥${pkg.price}</span>
+      </div>
+      <p>获得 ${pkg.gems} 水晶</p>
+      <button data-buy-iap="${pkg.id}">${icon('gem', 15)}演示购买</button>
+    </div>`).join('');
+  body.innerHTML = `<p class="formation-hint">${icon('star', 13)}本原型为演示用途，不会产生真实扣款，购买结果直接写入当前存档。</p>${section('水晶礼包', packages)}`;
 }
 
 function buyProduct(key) {
@@ -1595,13 +2073,14 @@ function buyProduct(key) {
     addItem(itemId, 1);
     renderShop();
     renderHeader();
+    autosave();
     showToast(`购买了 ${item.name}`);
     return;
   }
   if (key.startsWith('weapon:')) {
     const weaponId = key.slice(7);
     const weapon = WEAPONS[weaponId];
-    if (state.weapons.includes(weaponId)) return;
+    if (hasWeaponType(weaponId)) return;
     if (state.gold < weapon.cost) {
       showToast('金币不足');
       return;
@@ -1610,13 +2089,14 @@ function buyProduct(key) {
     addWeapon(weaponId);
     renderShop();
     renderHeader();
+    autosave();
     showToast(`购买了 ${weapon.name}`);
     return;
   }
   if (key.startsWith('armor:')) {
     const armorId = key.slice(6);
     const armor = ARMORS[armorId];
-    if (state.armors.includes(armorId)) return;
+    if (hasArmorType(armorId)) return;
     if (state.gold < armor.cost) {
       showToast('金币不足');
       return;
@@ -1625,6 +2105,7 @@ function buyProduct(key) {
     addArmor(armorId);
     renderShop();
     renderHeader();
+    autosave();
     showToast(`购买了 ${armor.name}`);
   }
 }
@@ -1637,11 +2118,9 @@ function buyIap(packageId) {
       label: '确认购买',
       onClick: () => {
         state.gems += pkg.gems;
-        if (pkg.bonus) {
-          Object.entries(pkg.bonus).forEach(([id, count]) => addItem(id, count));
-        }
         renderShop();
         renderHeader();
+        autosave();
         showToast(`演示购买完成：${pkg.name}`);
       }
     },
@@ -1649,12 +2128,102 @@ function buyIap(packageId) {
   ]);
 }
 
-function restAtInn() {
-  if (state.gold < 50) {
+function openInn() {
+  currentTab = 'inn';
+  renderInnView();
+  document.querySelectorAll('[data-tab]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.tab === 'inn');
+  });
+}
+
+function renderInnView() {
+  const restCost = innRestCost();
+  const restCard = `
+    <section class="inn-section">
+      <h2 class="shop-section-title">${icon('heart', 15)}旅馆休息</h2>
+      <div class="inn-rest">
+        <div class="inn-rest-info">
+          <div class="inn-rest-icon">${icon('bed', 22)}</div>
+          <div>
+            <h3>钟点房</h3>
+            <p>全队复活并回复满 HP / MP。费用为当前持有金币的 1%（下限 1，上限 200）。</p>
+          </div>
+        </div>
+        <div class="inn-rest-action">
+          <span class="price-big">${fmt(restCost)} 金币</span>
+          <button data-inn-action="rest" ${state.gold < restCost ? 'disabled' : ''}>${icon('heart', 15)}入住休息</button>
+        </div>
+      </div>
+    </section>`;
+
+  // 招募区：8 个扩展职业直接金币购买
+  const recruitCards = RECRUITABLE.map((id) => {
+    const cls = CLASSES[id];
+    const cost = RECRUIT_COSTS[id];
+    const owned = hasClass(id);
+    const afford = state.gold >= cost;
+    return `
+      <div class="product-card ${owned ? 'owned' : ''}">
+        <div class="product-head">
+          <div class="recruit-sprite">${partySprite(id)}</div>
+          <h3><span>${cls.job}</span></h3>
+          <span class="price" style="${owned ? 'color:var(--teal)' : ''}">${owned ? '已招募' : `${fmt(cost)} 金币`}</span>
+        </div>
+        <p>${cls.name} · ${skillNames(cls)}</p>
+        <button data-inn-action="recruit" data-recruit="${id}" ${owned ? 'disabled' : afford ? '' : 'disabled'}>${icon(owned ? 'check' : 'users', 15)}${owned ? '已在队伍中' : afford ? '招募组队' : '金币不足'}</button>
+      </div>`;
+  }).join('');
+
+  $('innView').innerHTML = `
+    ${restCard}
+    <section class="inn-section">
+      <h2 class="shop-section-title">${icon('users', 15)}招募新队友</h2>
+      <p class="inn-hint">扩展职业统一使用金币直接招募（非抽卡）。更多冒险角色已加入，可在后续「队伍」界面自由组建出战阵容。</p>
+      <div class="product-grid">${recruitCards}</div>
+    </section>`;
+}
+
+function skillNames(cls) {
+  return cls.skills.map((id) => SKILLS[id] ? SKILLS[id].name : id).join(' / ');
+}
+
+function recruitClass(id) {
+  if (hasClass(id)) {
+    showToast('该职业已在队伍中');
+    return;
+  }
+  const cls = CLASSES[id];
+  const cost = RECRUIT_COSTS[id];
+  if (state.gold < cost) {
     showToast('金币不足');
     return;
   }
-  state.gold -= 50;
+  openModal('确认招募', `<p>花费 <b>${fmt(cost)} 金币</b> 招募「${cls.job}」${cls.name}？</p><p>招募后将加入你的待命队伍，可在后续「队伍」界面编入出战阵容。</p>`, [
+    {
+      label: '确认招募',
+      onClick: () => {
+        state.gold -= cost;
+        const stats = statsFor({ id, level: 1 });
+        const weaponInst = addWeaponInstance(cls.weapon);
+        const armorInst = addArmorInstance(cls.armor);
+        state.roster.push({ id, level: 1, exp: 0, hp: stats.maxHp, mp: stats.maxMp, weapon: weaponInst.uid, armor: armorInst.uid, alive: true, buff: null, row: 'front' });
+        renderInnView();
+        renderHeader();
+        autosave();
+        showToast(`${cls.name}（${cls.job}）加入！`);
+      }
+    },
+    { label: '取消' }
+  ]);
+}
+
+function restAtInn() {
+  const cost = innRestCost();
+  if (state.gold < cost) {
+    showToast('金币不足');
+    return;
+  }
+  state.gold -= cost;
   state.party.forEach((member) => {
     member.alive = true;
     const stats = statsFor(member);
@@ -1663,19 +2232,40 @@ function restAtInn() {
   });
   renderHeader();
   renderPartyList();
+  autosave();
   showToast('在旅店休息，队伍已完全回复');
 }
 
 function partySprite(job) {
   const color = CLASSES[job].color;
-  const hair = job === 'knight' ? '#5b3d2a' : job === 'priest' ? '#e8d9ae' : job === 'mage' ? '#20324a' : '#2e2418';
-  const weaponSvg = job === 'knight'
-    ? '<path d="M47 15l8 7-22 23-8-7z" fill="#cfd5d2"/><path d="M49 13l9 8" stroke="#8b918e" stroke-width="4"/>'
-    : job === 'priest'
-      ? '<path d="M47 12l10 44-6 2-10-44z" fill="#c7a45c"/><circle cx="51" cy="13" r="4" fill="#f1d98a"/>'
-      : job === 'mage'
-        ? '<circle cx="51" cy="14" r="8" fill="#9bd0ee"/><path d="M43 12h18l-8 44h-2z" fill="#3f6da0"/>'
-        : '<path d="M42 14h16l-4 46h-8z" fill="#b38145"/>';
+  const hairByJob = {
+    knight: '#5b3d2a', priest: '#e8d9ae', mage: '#20324a', monk: '#2e2418',
+    red_mage: '#7a1f3d', paladin: '#e8d9ae', ninja: '#1d2438', dragoon: '#3a3f52',
+    summoner: '#7a4fa8', bard: '#5b4a2a', geomancer: '#3d4f26', alchemist: '#2e5a2a'
+  };
+  const hair = hairByJob[job] || '#2e2418';
+  let weaponSvg = '';
+  if (job === 'knight' || job === 'paladin') {
+    weaponSvg = '<path d="M47 15l8 7-22 23-8-7z" fill="#cfd5d2"/><path d="M49 13l9 8" stroke="#8b918e" stroke-width="4"/>';
+  } else if (job === 'priest') {
+    weaponSvg = '<path d="M47 12l10 44-6 2-10-44z" fill="#c7a45c"/><circle cx="51" cy="13" r="4" fill="#f1d98a"/>';
+  } else if (job === 'mage') {
+    weaponSvg = '<circle cx="51" cy="14" r="8" fill="#9bd0ee"/><path d="M43 12h18l-8 44h-2z" fill="#3f6da0"/>';
+  } else if (job === 'monk') {
+    weaponSvg = '<path d="M42 14h16l-4 46h-8z" fill="#b38145"/>';
+  } else if (job === 'red_mage' || job === 'dragoon') {
+    weaponSvg = '<path d="M46 10l9 8-16 24-9-8z" fill="#c9d1d8"/><line x1="50" y1="12" x2="58" y2="20" stroke="#8b918e" stroke-width="3"/>';
+  } else if (job === 'ninja') {
+    weaponSvg = '<path d="M42 18h18l-4 42h-10z" fill="#4c5a76"/><path d="M42 22h18" stroke="#1d2430" stroke-width="2"/>';
+  } else if (job === 'summoner') {
+    weaponSvg = '<path d="M47 14l10 40-6 2-10-40z" fill="#7a4fa8"/><circle cx="51" cy="13" r="5" fill="#d8a7ff"/>';
+  } else if (job === 'bard') {
+    weaponSvg = '<circle cx="50" cy="30" r="9" fill="none" stroke="#e8c56a" stroke-width="2"/><line x1="58" y1="31" x2="58" y2="16" stroke="#e8c56a" stroke-width="2"/>';
+  } else if (job === 'geomancer') {
+    weaponSvg = '<path d="M47 12l9 42-5 2-9-42z" fill="#7c9a53"/><circle cx="52" cy="13" r="4" fill="#a8c47a"/>';
+  } else if (job === 'alchemist') {
+    weaponSvg = '<path d="M45 14a7 7 0 0 1 12 0l-7 18z" fill="#8fcb7a"/><circle cx="51" cy="18" r="3" fill="#f0f7e8"/>';
+  }
   return `<svg class="sprite" viewBox="0 0 64 64" role="img" aria-label="${CLASSES[job].job}">
     <rect x="22" y="20" width="20" height="18" rx="6" fill="${hair}"/>
     <rect x="17" y="20" width="30" height="7" fill="${color}"/>
@@ -1774,12 +2364,10 @@ function gameOverContinue() {
   battle = null;
   explore = null;
   towerRun = null;
-  if (!loadGame()) {
-    state = defaultState();
-  }
+  // 失败后不读档：保留当前（全灭/存档前）状态，回到主菜单由玩家自理（旅店/道具复活）
   goto('screen-main');
   renderAll();
-  showToast('从最近存档继续');
+  showToast('已返回主菜单，可前往旅店恢复');
 }
 
 function renderTitle() {
@@ -1812,7 +2400,120 @@ function deleteSave() {
   ]);
 }
 
+// ==========================================================================
+// 界面帮助说明：给每个界面挂一个提示按钮，点击后介绍其交互逻辑、核心功能、
+// 设计准则与 UI 布局，方便后续开发者快速理解本作的设计意图。
+// 结构：[标题, [小节标题, 小节正文HTML][]]
+// ==========================================================================
+const HELP_GUIDES = {
+  title: [
+    '标题画面',
+    [
+      ['交互逻辑', '点击「新的冒险」开新档（覆盖旧档）；「继续冒险」读取本地存档；「删除存档」需二次确认。右上角「?」可随时查看本界面说明。'],
+      ['核心功能', '游戏入口。本作是横屏商业手游范式演示：顶栏资源栏 + 底部 dock 导航 + 主视区多页签。'],
+      ['设计准则', '商业手游启动页惯例：大 Logo + 突出主 CTA（新冒险/继续），次要操作弱化为幽灵按钮；全屏背景用四元素光效营造奇幻氛围。'],
+      ['UI 布局', '居中 Logo（霓虹标题 + 英文副标）→ 操作按钮竖排 → 底部一句项目定位说明。']
+    ]
+  ],
+  map: [
+    '冒险页（主视区）',
+    [
+      ['交互逻辑', '底部 dock「冒险」进入。点击地图上的地区卡开始探索；回廊（塔）为无尽挑战模式。'],
+      ['核心功能', '主线推进：烈焰洞窟 → 碧水神殿 → 黄土遗迹 → 疾风之塔 → 暗之王座。地区有「可探索 / 已讨伐 / 未解锁」状态。'],
+      ['设计准则', '商业手游大地图惯例：地区卡呈现图标 + 状态标签 + 等级信息，主 CTA（开始探索/再探索）置于卡片底部；未解锁地区置灰加锁。'],
+      ['UI 布局', '卡片流式排布（自适应网格）。左上贴边浮窗常驻显示「使命」进度与「队伍」出战状态。']
+    ]
+  ],
+  party: [
+    '队伍页（出战/后备）',
+    [
+      ['交互逻辑', '底部 dock「队伍」进入。出战阵容最多 4 人，可上阵/下阵/调整前后排；点击成员卡上的武器/防具行会弹出换装弹窗，可查看所有已持有装备并一键替换；「道具」「装备」子页分别使用道具与全局换装。'],
+      ['核心功能', 'FF3 式前后排：后排近战物理输出 ×0.6、所受物理伤害 ×0.7，远程武器与魔法不受后排影响。后备角色不参与战斗。'],
+      ['设计准则', '卡片化成员信息（HP/MP/EXP/攻防速魔精 + 技能 + 装备），前后排与后备用彩色徽章区分；危险操作（下阵）用红色按钮提示。装备不用下拉框，改用弹窗式选择，便于移植到 Unity 后用独立装备面板实现。'],
+      ['UI 布局', '顶部子页签（队伍/道具/装备）→ 说明条 → 出战阵容卡片组 → 后备阵容卡片组。左上贴边队伍栏同步显示每人的前后排位置。']
+    ]
+  ],
+  items: [
+    '道具页',
+    [
+      ['交互逻辑', '队伍页内切到「道具」子页。点击「使用」选择作用对象；对倒下队员只能使用复活道具；全体类道具（回满/金币/经验）直接生效。'],
+      ['核心功能', '包含恢复（HP/MP）、复活、全体回满、逃跑加成、眩晕、经验/金币等道具，是探索中的主要补给手段。'],
+      ['设计准则', '道具卡展示图标 + 名称 + 数量 + 说明；数量为 0 时禁用按钮，保持「拿得到就用得上」的直观反馈。'],
+      ['UI 布局', '单列卡片列表，图标居左、使用按钮居右，信息一屏可扫。']
+    ]
+  ],
+  equip: [
+    '装备页',
+    [
+      ['交互逻辑', '队伍页内切到「装备」子页。展示所有已持有的武器/防具，点击「换装」选择装备该装备的队员（上阵或后备均可），选完立即生效。'],
+      ['核心功能', '全局装备管理：武器按职业过滤适用队员，防具全职业通用；每件装备标注当前装备人数。'],
+      ['设计准则', '与道具页同款卡片复用；无适用队员的武器禁用并提示；避免在下拉框里做装备，改用弹窗/面板选择，贴近 Unity 常见装备 UI。'],
+      ['UI 布局', '说明条 → 武器区 → 防具区；每张卡含图标、属性、适用职业、装备人数与换装按钮。']
+    ]
+  ],
+  shop: [
+    '商店页（金币/水晶）',
+    [
+      ['交互逻辑', '底部 dock「商店」进入，含「金币商店」与「水晶商店」两个子页签。购买按钮即时扣资源并静默存档。'],
+      ['核心功能', '金币商店卖消耗品与武器防具（已购装备自动点亮）；水晶商店演示内购礼包（水晶充值）。'],
+      ['设计准则', '商业手游商店惯例：商品卡含图标/名称/描述/价格，已拥有装备禁用并高亮；水晶为付费货币，礼包卡用金色描边区分。'],
+      ['UI 布局', '顶部子页签固定 → 消耗品 → 装备分区；卡片自适应网格。']
+    ]
+  ],
+  inn: [
+    '旅店页（休息/招募）',
+    [
+      ['交互逻辑', '底部 dock「旅店」进入。入住休息需金币（持有金币的 1%，下限 1 上限 200），全队复活并回满；金币足够时可直接招募扩展职业。'],
+      ['核心功能', '休息补给 + 招募 8 个扩展职业（金币直购、非抽卡）。招募后进入后备阵容，可在「队伍」页上阵。'],
+      ['设计准则', '休息与招募分区展示；招募沿用商品卡样式，已招募职业禁用并显示「已在队伍中」。'],
+      ['UI 布局', '休息卡（图标 + 说明 + 费用 + CTA）→ 招募区标题 + 说明条 + 职业卡片网格。']
+    ]
+  ],
+  battle: [
+    '战斗界面',
+    [
+      ['交互逻辑', '回合制：玩家行动 → 敌方行动 → 下一回合。点击左下指令盘选择攻击/技能/道具/逃跑；选择技能后需点选目标（敌方或队友），可取消重选。'],
+      ['核心功能', '前后排机制生效（后排近战输出/受击削弱）；技能消耗 MP；击破敌人获得经验与金币；全灭进入游戏结束画面。'],
+      ['设计准则', '敌人居右、我方居左，当前行动单位高亮描边；HP/MP 条形化展示；下方日志记录每回合经过，结算面板总结战果。'],
+      ['UI 布局', '顶部（标题 + 回合 + 说明按钮）→ 战斗舞台（敌我双方卡牌）→ 底部控制台（日志 + 指令/目标选择）。']
+    ]
+  ],
+  gameover: [
+    '游戏结束画面',
+    [
+      ['交互逻辑', '队伍全灭后出现。可「从最近存档继续」或「返回标题」；右上角「?」可查看本界面说明。'],
+      ['核心功能', '失败兜底：不自动回档，回主菜单后靠旅店/道具自救，体现「存档在手」的设计。'],
+      ['设计准则', '全灭用醒目红色大字 + 简短文案，两个逃生口操作并列，避免玩家卡死。'],
+      ['UI 布局', '居中大标题 → 说明文案 → 操作按钮组。']
+    ]
+  ]
+};
+
+function currentHelpKey() {
+  if (!$('screen-main').classList.contains('hidden')) {
+    if (currentTab === 'menu') return menuTab;
+    return currentTab;
+  }
+  if (!$('screen-battle').classList.contains('hidden')) return 'battle';
+  if (!$('screen-gameover').classList.contains('hidden')) return 'gameover';
+  return 'title';
+}
+
+function openHelp(key) {
+  const guide = HELP_GUIDES[key] || HELP_GUIDES[currentTab] || HELP_GUIDES.title;
+  $('helpTitle').textContent = guide[0];
+  $('helpBody').innerHTML = guide[1].map(([head, body]) => `<section class="help-section"><h3>${head}</h3><p>${body}</p></section>`).join('');
+  $('helpOverlay').classList.remove('hidden');
+}
+
+function closeHelp() {
+  $('helpOverlay').classList.add('hidden');
+}
+
 document.addEventListener('click', (event) => {
+  if (!$('helpOverlay').classList.contains('hidden') && event.target.closest('#helpOverlay') && !event.target.closest('.help-panel')) {
+    closeHelp();
+  }
   const button = event.target.closest('button');
   const targetCard = event.target.closest('[data-battle-target]');
   if (targetCard && battleAction) {
@@ -1837,17 +2538,48 @@ document.addEventListener('click', (event) => {
     saveGame();
     return;
   }
-  if (button.id === 'shopBackBtn') {
-    goto('screen-main');
-    renderMapView();
-    return;
-  }
   if (button.id === 'gameoverContinueBtn') {
     gameOverContinue();
     return;
   }
   if (button.id === 'gameoverTitleBtn') {
     gameOverToTitle();
+    return;
+  }
+  if (button.id === 'titleHelpBtn') {
+    openHelp('title');
+    return;
+  }
+  if (button.id === 'mainHelpBtn') {
+    openHelp(currentHelpKey());
+    return;
+  }
+  if (button.id === 'battleHelpBtn') {
+    openHelp('battle');
+    return;
+  }
+  if (button.id === 'gameoverHelpBtn') {
+    openHelp('gameover');
+    return;
+  }
+  if (button.id === 'helpCloseBtn' || button.closest('#helpOverlay')) {
+    closeHelp();
+    return;
+  }
+  const openEquip = button.dataset.openEquip;
+  if (openEquip) {
+    openEquipModal(button.dataset.pool, openEquip, Number(button.dataset.index));
+    return;
+  }
+  const equipOption = button.dataset.equipOption;
+  if (equipOption) {
+    equipOptionListener(event);
+    return;
+  }
+  const equipTarget = button.dataset.equipTarget;
+  if (equipTarget) {
+    const [slot, id] = equipTarget.split(':');
+    equipTargetPicker(slot, id);
     return;
   }
 
@@ -1868,18 +2600,49 @@ document.addEventListener('click', (event) => {
     renderMenuView();
     return;
   }
+  const formation = button.dataset.formation;
+  if (formation) {
+    const pool = button.dataset.pool === 'roster' ? state.roster : state.party;
+    const index = Number(button.dataset.index);
+    const member = pool[index];
+    if (formation === 'deploy') {
+      if (state.party.length >= 4) {
+        showToast('出战阵容已满 4 人');
+        return;
+      }
+      const [moved] = state.roster.splice(index, 1);
+      moved.row = 'front';
+      state.party.push(moved);
+      autosave();
+      showToast(`${CLASSES[moved.id].name} 已上阵（前排）`);
+    } else if (formation === 'bench') {
+      const [moved] = state.party.splice(index, 1);
+      if (moved.row !== 'back') moved.row = 'back';
+      state.roster.push(moved);
+      autosave();
+      showToast(`${CLASSES[moved.id].name} 已转入后备`);
+    } else if (formation === 'row') {
+      member.row = button.dataset.row === 'back' ? 'back' : 'front';
+      autosave();
+      showToast(member.row === 'front' ? `${CLASSES[member.id].name} 已移至前排` : `${CLASSES[member.id].name} 已移至后排`);
+    }
+    renderMenuView();
+    renderHeader();
+    renderPartyList();
+    return;
+  }
 
   const areaAction = button.dataset.areaAction;
-  if (areaAction === 'shop') {
-    openShop('gold');
-    return;
-  }
-  if (areaAction === 'inn') {
+
+  const innAction = button.dataset.innAction;
+  if (innAction === 'rest') {
     restAtInn();
+    renderInnView();
+    renderHeader();
     return;
   }
-  if (areaAction === 'save') {
-    saveGame();
+  if (innAction === 'recruit') {
+    recruitClass(button.dataset.recruit);
     return;
   }
   if (areaAction === 'tower') {
@@ -1974,7 +2737,7 @@ document.addEventListener('click', (event) => {
       }
     } else if (battleActionName === 'item') {
       const item = ITEMS[button.dataset.itemId];
-      if (['escape', 'party_heal', 'stun'].includes(item.kind)) {
+      if (['escape'].includes(item.kind)) {
         const lines = resolveActorAction(actor, { kind: 'item', itemId: button.dataset.itemId }, null);
         lines.forEach((line) => addBattleLog(line, classifyLog(line)));
         finishActorTurn();
@@ -1994,19 +2757,6 @@ document.addEventListener('click', (event) => {
   if (resultAction) {
     handleBattleResult(resultAction);
   }
-});
-
-document.addEventListener('change', (event) => {
-  const select = event.target;
-  if (!select.dataset.equip) return;
-  const index = Number(select.dataset.index);
-  const member = state.party[index];
-  if (!member) return;
-  member[select.dataset.equip] = select.value;
-  renderMenuView();
-  renderHeader();
-  renderPartyList();
-  showToast('装备已更换');
 });
 
 renderTitle();

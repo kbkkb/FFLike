@@ -9,66 +9,87 @@
 <body>
   <div id="app">
     <div class="frame">
+
+      <!-- 顶部资源 HUD：仅保留三个货币栏（商业手游惯例） -->
       <header class="topbar">
-        <div class="brand">水晶纪行 <span>CRYSTAL SAGA</span></div>
-        <div class="topbar-status">
-          <span class="stat" id="hudGold">金币 0</span>
-          <span class="stat gem" id="hudGems">水晶 0</span>
-          <span class="stat" id="hudLocation">微风村</span>
-          <span class="stat" id="hudFloor"></span>
-          <button id="saveBtn" class="ghost-btn">存档</button>
+        <div class="hud-resources">
+          <span class="ressource gold"><span class="resicon">●</span><span id="hudGold">0</span></span>
+          <span class="ressource gem"><span class="resicon">◆</span><span id="hudGems">0</span></span>
+          <span class="ressource energy"><span class="resicon">⚡</span><span id="hudEnergy">120/120</span></span>
         </div>
+        <button id="mainHelpBtn" class="help-btn" aria-label="当前界面说明">说明</button>
       </header>
 
       <main>
+        <!-- 标题画面 -->
         <section id="screen-title" class="screen active">
-          <div class="title-crystals" aria-hidden="true">
-            <span class="crystal c-fire"></span>
-            <span class="crystal c-water"></span>
-            <span class="crystal c-earth"></span>
-            <span class="crystal c-wind"></span>
+          <div class="title-deco" aria-hidden="true">
+            <span class="neon fire"></span>
+            <span class="neon water"></span>
+            <span class="neon earth"></span>
+            <span class="neon wind"></span>
           </div>
           <div class="title-logo">
             <h1>水晶纪行</h1>
             <p>CRYSTAL SAGA</p>
           </div>
+          <button id="titleHelpBtn" class="help-btn float" aria-label="界面说明">说明</button>
           <div class="title-actions">
-            <button id="newGameBtn" class="primary-btn">新的冒险</button>
-            <button id="continueGameBtn" class="primary-btn">继续冒险</button>
-            <button id="deleteSaveBtn" class="ghost-btn">删除存档</button>
+            <button id="newGameBtn" class="primary-btn big">新的冒险</button>
+            <button id="continueGameBtn" class="primary-btn big">继续冒险</button>
+            <button id="deleteSaveBtn" class="ghost-btn big">删除存档</button>
           </div>
-          <p class="title-note">轻量级回合制 RPG 原型 · 用于玩法与 UI 验证</p>
+          <p class="title-note">轻量级回合制 RPG · 商业手游 HUD/玩法布局展示</p>
         </section>
 
+        <!-- 主界面：中央主视区 + 贴边浮窗 + 底部功能 dock -->
         <section id="screen-main" class="screen hidden">
-          <div class="main-layout">
-            <aside class="side">
-              <section class="panel objective-panel">
-                <h2>使命</h2>
+          <div class="main-shell">
+            <aside class="quest-rail">
+              <section class="minipanel objective-panel">
+                <div class="mp-head">使命</div>
                 <p id="objectiveText"></p>
               </section>
-              <section class="panel party-panel">
-                <h2>队伍</h2>
+              <section class="minipanel ship-panel">
+                <div class="mp-head">队伍</div>
                 <div id="partyList"></div>
               </section>
             </aside>
+
             <section class="content-panel">
-              <div class="tabbar">
-                <button class="tab active" data-tab="map">冒险</button>
-                <button class="tab" data-tab="menu">菜单</button>
-              </div>
               <div id="mapView" class="tab-view"></div>
               <div id="menuView" class="tab-view hidden"></div>
+              <div id="shopView" class="tab-view hidden"></div>
+              <div id="innView" class="tab-view hidden"></div>
             </section>
+
+            <nav class="mobiledock">
+              <button class="dock-item active" data-tab="map">
+                <span class="dock-icon">🗺️</span><span>冒险</span>
+              </button>
+              <button class="dock-item" data-tab="menu">
+                <span class="dock-icon">👥</span><span>队伍</span>
+              </button>
+              <button class="dock-item" data-tab="shop">
+                <span class="dock-icon">🛒</span><span>商店</span>
+              </button>
+              <button class="dock-item" data-tab="inn">
+                <span class="dock-icon">🏠</span><span>旅店</span>
+              </button>
+            </nav>
           </div>
         </section>
 
+        <!-- 战斗：全屏居中舞台 + 底部操作盘 -->
         <section id="screen-battle" class="screen hidden">
-          <div class="battle-wrap">
-            <div class="battle-top">
-              <div id="battleTitle" class="battle-title">遭遇战</div>
+          <div class="battle-topbar">
+            <div id="battleTitle" class="battle-title">遭遇战</div>
+            <div class="battle-topbar-right">
               <div id="battleTurn" class="battle-turn">第 1 回合</div>
+              <button id="battleHelpBtn" class="help-btn" aria-label="战斗说明">说明</button>
             </div>
+          </div>
+          <div class="battle-view">
             <div id="battleStage" class="battle-stage"></div>
             <div class="battle-console">
               <div id="battleLog" class="battle-log" aria-live="polite"></div>
@@ -77,29 +98,12 @@
           </div>
         </section>
 
-        <section id="screen-shop" class="screen hidden">
-          <div class="shop-header">
-            <div>
-              <h2>晨曦商会</h2>
-              <p>补给、装备与演示内购都在这里。</p>
-            </div>
-            <div class="shop-header-stats">
-              <span id="shopGold">金币 0</span>
-              <span id="shopGems" class="gem">水晶 0</span>
-              <button id="shopBackBtn" class="ghost-btn">返回地图</button>
-            </div>
-          </div>
-          <div class="shop-tabs">
-            <button class="tab active" data-shop-tab="gold">金币商店</button>
-            <button class="tab" data-shop-tab="crystal">水晶商店</button>
-          </div>
-          <div id="shopContent" class="shop-content"></div>
-        </section>
-
+        <!-- 游戏结束 -->
         <section id="screen-gameover" class="screen hidden">
           <div class="gameover-mark">全灭</div>
           <h2>队伍全灭</h2>
           <p>冒险暂时中断。你可以从最近的存档继续，或返回标题。</p>
+          <button id="gameoverHelpBtn" class="help-btn float" aria-label="界面说明">说明</button>
           <div class="title-actions">
             <button id="gameoverContinueBtn" class="primary-btn">从最近存档继续</button>
             <button id="gameoverTitleBtn" class="primary-btn">返回标题</button>
@@ -111,6 +115,17 @@
 
   <div id="toast" class="toast" role="status"></div>
   <div id="modalRoot" class="modal-root hidden"></div>
+
+  <!-- 界面帮助浮层：介绍当前界面的交互逻辑、核心功能、设计准则与 UI 布局 -->
+  <div id="helpOverlay" class="help-overlay hidden">
+    <div class="help-panel" role="dialog" aria-modal="true" aria-label="界面说明">
+      <header class="help-head">
+        <h2 id="helpTitle"></h2>
+        <button id="helpCloseBtn" class="help-btn" aria-label="关闭说明">关闭</button>
+      </header>
+      <div id="helpBody" class="help-body"></div>
+    </div>
+  </div>
 
   <script src="game.js" charset="utf-8"></script>
 </body>

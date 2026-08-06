@@ -86,6 +86,7 @@
             <div id="battleTitle" class="battle-title">遭遇战</div>
             <div class="battle-topbar-right">
               <div id="battleTurn" class="battle-turn">第 1 回合</div>
+              <button id="autoBattleBtn" class="help-btn" aria-label="自动战斗">自动</button>
               <button id="battleHelpBtn" class="help-btn" aria-label="战斗说明">说明</button>
             </div>
           </div>
@@ -94,6 +95,27 @@
             <div class="battle-console">
               <div id="battleLog" class="battle-log" aria-live="polite"></div>
               <div id="battleCommand" class="battle-command"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 地牢探索：近景网格视野（无迷雾）+ 左下虚拟摇杆 -->
+        <section id="screen-explore" class="screen hidden">
+          <div class="explore-topbar">
+            <div id="exploreTitle" class="battle-title">烈焰洞窟</div>
+            <div class="explore-topbar-right">
+              <div id="exploreFloor" class="battle-turn">第 1/2 层</div>
+              <button data-dungeon-leave class="help-btn" aria-label="离开地牢">离开</button>
+              <button id="exploreLegendBtn" class="help-btn" aria-label="地牢图例">图例</button>
+              <button id="exploreHelpBtn" class="help-btn" aria-label="地牢说明">说明</button>
+            </div>
+          </div>
+          <div class="explore-body">
+            <div class="dungeon-wrap" role="grid" aria-label="地牢视野">
+              <div id="dungeonGrid" class="dungeon-grid"></div>
+            </div>
+            <div id="joystick" class="joystick" role="group" aria-label="移动摇杆">
+              <div id="joystickKnob" class="joystick-knob"></div>
             </div>
           </div>
         </section>
@@ -114,6 +136,7 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
+  <div id="fadeOverlay" class="fade-overlay" aria-hidden="true"></div>
   <div id="modalRoot" class="modal-root hidden"></div>
 
   <!-- 界面帮助浮层：介绍当前界面的交互逻辑、核心功能、设计准则与 UI 布局 -->
@@ -124,6 +147,17 @@
         <button id="helpCloseBtn" class="help-btn" aria-label="关闭说明">关闭</button>
       </header>
       <div id="helpBody" class="help-body"></div>
+    </div>
+  </div>
+
+  <!-- 地牢图例浮层：地格效果说明 + 地图制作素材清单 -->
+  <div id="legendOverlay" class="help-overlay hidden">
+    <div class="help-panel" role="dialog" aria-modal="true" aria-label="地牢图例">
+      <header class="help-head">
+        <h2>地牢图例 · 素材清单</h2>
+        <button id="legendCloseBtn" class="help-btn" aria-label="关闭图例">关闭</button>
+      </header>
+      <div id="legendBody" class="help-body"></div>
     </div>
   </div>
 

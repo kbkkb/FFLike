@@ -6,7 +6,7 @@ const SAVE_KEY = 'crystal_saga_save_v1';
 const CLASSES = {
   knight: {
     name: '艾德',
-    job: '剑士',
+    job: '战士',
     color: '#d96a4e',
     hp: [44, 9],
     mp: [4, 1],
@@ -70,7 +70,7 @@ const CLASSES = {
   },
   red_mage: {
     name: '爱萝',
-    job: '红魔导士',
+    job: '赤魔法师',
     color: '#d23a6e',
     hp: [38, 7],
     mp: [16, 3],
@@ -86,7 +86,7 @@ const CLASSES = {
   },
   paladin: {
     name: '凯恩',
-    job: '圣骑士',
+    job: '骑士',
     color: '#7fae8b',
     hp: [52, 10],
     mp: [10, 2],
@@ -102,7 +102,7 @@ const CLASSES = {
   },
   ninja: {
     name: '影',
-    job: '盗贼忍者',
+    job: '盗贼',
     color: '#6f7cae',
     hp: [36, 6],
     mp: [14, 2],
@@ -166,7 +166,7 @@ const CLASSES = {
   },
   geomancer: {
     name: '岩',
-    job: '风水术师',
+    job: '绘灵法师',
     color: '#7c9a53',
     hp: [46, 9],
     mp: [12, 2],
@@ -182,7 +182,7 @@ const CLASSES = {
   },
   alchemist: {
     name: '露琪',
-    job: '炼金术士',
+    job: '绝枪战士',
     color: '#8fcb7a',
     hp: [36, 7],
     mp: [16, 3],
@@ -209,7 +209,7 @@ const SKILLS = {
   cure: { name: '治疗', kind: 'heal', power: 2.0, cost: 5, target: 'ally', desc: '回复一名队友' },
   cura: { name: '全愈', kind: 'heal', power: 3.2, cost: 14, target: 'all_ally', desc: '回复全体队友' },
 raise: { name: '复苏', kind: 'revive', power: 0.5, cost: 12, target: 'ally', desc: '复活一名倒下的队友' },
-  smite: { name: '圣光斩', kind: 'attack', power: 1.7, cost: 0, target: 'enemy', desc: '圣骑士的强力单体斩击' },
+  smite: { name: '圣光斩', kind: 'attack', power: 1.7, cost: 0, target: 'enemy', desc: '骑士的强力单体斩击' },
   double: { name: '影连击', kind: 'attack', power: 1.15, cost: 0, target: 'enemy', desc: '两次快速的忍刀攻击' },
   jump: { name: '跳跃', kind: 'attack', power: 1.9, cost: 0, target: 'enemy', desc: '跃空坠落的强力突刺' },
   thunderbolt: { name: '召唤·雷霆', kind: 'magic', power: 2.3, cost: 12, target: 'enemy', desc: '召来轰雷轰击单体敌人' },
@@ -219,7 +219,7 @@ raise: { name: '复苏', kind: 'revive', power: 0.5, cost: 12, target: 'ally', d
 };
 
 const WEAPONS = {
-  iron_sword: { name: '铁剑', power: 7, cost: 220, jobs: ['knight'], mag: 0, desc: '剑士的起点武器' },
+  iron_sword: { name: '铁剑', power: 7, cost: 220, jobs: ['knight'], mag: 0, desc: '战士的起点武器' },
   mythril_sword: { name: '秘银剑', power: 14, cost: 900, jobs: ['knight'], mag: 0, desc: '锋利的秘银长剑' },
   flame_sword: { name: '烈焰剑', power: 21, cost: 2200, jobs: ['knight'], mag: 0, desc: '缠绕火焰的传说剑' },
   wood_staff: { name: '木杖', power: 4, cost: 90, jobs: ['priest', 'mage'], mag: 4, desc: '普通施法杖' },
@@ -227,9 +227,9 @@ const WEAPONS = {
   sage_staff: { name: '贤者之杖', power: 14, cost: 2100, jobs: ['priest', 'mage'], mag: 15, desc: '贤者的高阶法杖' },
   knuckles: { name: '铁拳套', power: 8, cost: 260, jobs: ['monk'], mag: 0, desc: '武僧专用拳套' },
   mythril_knuckles: { name: '秘银拳套', power: 16, cost: 1000, jobs: ['monk'], mag: 0, desc: '轻而致命的拳套' },
-  rapier: { name: '刺剑', power: 9, cost: 420, jobs: ['red_mage'], mag: 2, desc: '红魔导士的轻盈长剑' },
+  rapier: { name: '刺剑', power: 9, cost: 420, jobs: ['red_mage'], mag: 2, desc: '赤魔法师的轻盈长剑' },
   mythril_rapier: { name: '秘银刺剑', power: 16, cost: 1500, jobs: ['red_mage'], mag: 4, desc: '集物理与魔法于一身' },
-  holy_mace: { name: '圣光权杖', power: 8, cost: 400, jobs: ['paladin'], mag: 0, desc: '圣骑士的沉重权杖' },
+  holy_mace: { name: '圣光权杖', power: 8, cost: 400, jobs: ['paladin'], mag: 0, desc: '骑士的沉重权杖' },
   mythril_mace: { name: '秘银权杖', power: 15, cost: 1400, jobs: ['paladin'], mag: 0, desc: '沉重有力的秘银锤' },
   shuriken: { name: '手里剑', power: 6, cost: 300, jobs: ['ninja'], mag: 0, ranged: true, desc: '飞掷的暗刃，快速消耗' },
   mythril_shuriken: { name: '秘银手里剑', power: 13, cost: 1100, jobs: ['ninja'], mag: 0, ranged: true, desc: '淬炼的暗器' },
@@ -420,6 +420,168 @@ const BOSS_REWARDS = {
   final: { gold: 1500, gems: 150 }
 };
 
+const DUNGEONS = {
+  fire: {
+    encounter: 0.30,
+    floors: [
+      { name: '洞窟入口', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#.....#.#.#',
+        '#...C...S.#.#',
+        '#############'
+      ] },
+      { name: '熔岩深处', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#....B..#.#',
+        '#...........#',
+        '#############'
+      ] }
+    ]
+  },
+  water: {
+    encounter: 0.32,
+    floors: [
+      { name: '神殿前殿', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.##.##.#.#',
+        '#.#.....#.#.#',
+        '#..C..S.....#',
+        '#############'
+      ] },
+      { name: '潮汐圣所', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.##.##.#.#',
+        '#.#.....#.#.#',
+        '#....B......#',
+        '#############'
+      ] }
+    ]
+  },
+  earth: {
+    encounter: 0.34,
+    floors: [
+      { name: '遗迹外层', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#......#.##',
+        '#.#.#####.#.#',
+        '#.#.....#.#.#',
+        '#...C....S..#',
+        '#############'
+      ] },
+      { name: '沉睡回廊', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#...C.#.#.#',
+        '#.#....#..#.#',
+        '#...S....#..#',
+        '#############'
+      ] },
+      { name: '大地深处', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#.....#.#.#',
+        '#.#..B..#.#.#',
+        '#...........#',
+        '#############'
+      ] }
+    ]
+  },
+  wind: {
+    encounter: 0.36,
+    floors: [
+      { name: '塔底大厅', map: [
+        '#############',
+        '#P..........#',
+        '#.#####.###.#',
+        '#.#...#...#.#',
+        '#.#.###.#.#.#',
+        '#.#.....#.#.#',
+        '#...C....S..#',
+        '#############'
+      ] },
+      { name: '风暴回廊', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#.#....#..#',
+        '#.#.#.C...#.#',
+        '#...#..S....#',
+        '#############'
+      ] },
+      { name: '云霄之巅', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#....B..#.#',
+        '#...........#',
+        '#############'
+      ] }
+    ]
+  },
+  final: {
+    encounter: 0.38,
+    floors: [
+      { name: '王座前廊', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#.....#.#.#',
+        '#...C...S.#.#',
+        '#############'
+      ] },
+      { name: '暗影回廊', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.##.##.#.#',
+        '#.#.....#.#.#',
+        '#.#..C..#.#.#',
+        '#...S....#..#',
+        '#############'
+      ] },
+      { name: '王座之厅', map: [
+        '#############',
+        '#P..........#',
+        '#.#########.#',
+        '#.#.......#.#',
+        '#.#.#####.#.#',
+        '#.#....B..#.#',
+        '#...........#',
+        '#############'
+      ] }
+    ]
+  }
+};
+
 const IAP_PACKAGES = [
   { id: 'small', name: '小袋水晶', gems: 60, price: 6 },
   { id: 'large', name: '大袋水晶', gems: 300, price: 30 },
@@ -429,6 +591,7 @@ const IAP_PACKAGES = [
 
 let state = null;
 let explore = null;
+let dungeon = null;
 let towerRun = null;
 let battle = null;
 let battleAction = null;
@@ -808,6 +971,24 @@ function goto(screenId) {
   $(screenId).classList.add('active');
 }
 
+let autoBattle = false;
+
+function withBlackScreen(fn) {
+  const overlay = $('fadeOverlay');
+  overlay.classList.add('show');
+  setTimeout(() => {
+    fn();
+    requestAnimationFrame(() => overlay.classList.remove('show'));
+  }, 260);
+}
+
+function updateAutoBattleBtn() {
+  const btn = $('autoBattleBtn');
+  if (!btn) return;
+  btn.classList.toggle('active', autoBattle);
+  btn.textContent = autoBattle ? '自动 ★' : '自动';
+}
+
 function openModal(title, bodyHtml, buttons) {
   const root = $('modalRoot');
   root.innerHTML = `<div class="modal">
@@ -906,9 +1087,7 @@ function setMainTab(tab) {
 }
 
 function renderMapView() {
-  if (explore) {
-    renderExploration();
-  } else if (towerRun) {
+  if (towerRun) {
     renderTowerRun();
   } else {
     renderAreaList();
@@ -964,110 +1143,183 @@ function startExploration(areaId) {
     startTowerRun();
     return;
   }
-  const events = [];
-  for (let i = 0; i < area.steps; i++) {
-    const roll = Math.random();
-    if (roll < 0.58) events.push({ type: 'battle', group: randomGroup(area.pool) });
-    else if (roll < 0.86) events.push({ type: 'treasure', reward: randomTreasure(), resolved: false });
-    else events.push({ type: 'rest', resolved: false });
-  }
-  events.push({ type: 'boss', boss: area.boss, areaId });
-  explore = { areaId, events, index: 0 };
+  const def = DUNGEONS[areaId];
+  const floor0 = def.floors[0];
+  const start = findTile(floor0.map, 'P');
+  dungeon = {
+    areaId,
+    floor: 0,
+    x: start.x,
+    y: start.y,
+    seen: def.floors.map(() => new Set()),
+    opened: def.floors.map(() => new Set()),
+    log: []
+  };
+  revealDungeonAround();
   renderHeader();
-  renderMapView();
+  goto('screen-explore');
+  renderDungeon();
 }
 
-function renderExploration() {
-  const area = AREAS[explore.areaId];
-  const event = explore.events[explore.index];
-  const nodes = explore.events.map((item, index) => {
-    const cls = index < explore.index ? 'done' : index === explore.index ? 'current' : '';
-    return `<span class="node ${cls}"></span>`;
-  }).join('');
-  let card = '';
-  if (event.type === 'battle') {
-    card = `<div class="event-card">
-      <h3>遭遇战</h3>
-      <p>前方传来敌意，队伍已进入战斗准备。</p>
-      <div class="event-actions"><button data-explore-action="battle">${icon('sword', 16)}迎战</button></div>
-    </div>`;
-  } else if (event.type === 'boss') {
-    card = `<div class="event-card">
-      <h3>首领战</h3>
-      <p>${ENEMIES[event.boss].name} 守在深处，击败它即可净化这个区域。</p>
-      <div class="event-actions"><button data-explore-action="battle">${icon('trophy', 16)}挑战首领</button></div>
-    </div>`;
-  } else if (event.type === 'treasure') {
-    const label = event.resolved ? '继续前进' : '拾取';
-    const text = event.resolved
-      ? event.reward.kind === 'gold' ? `获得 ${event.reward.amount} 金币。` : `获得 ${ITEMS[event.reward.id].name} ×${event.reward.amount}。`
-      : '发现一个宝箱。';
-    card = `<div class="event-card">
-      <h3>宝箱</h3>
-      <p>${text}</p>
-      <div class="event-actions"><button data-explore-action="${event.resolved ? 'continue' : 'resolve'}">${event.resolved ? icon('arrow-right') : icon('check')}${label}</button></div>
-    </div>`;
+function findTile(map, char) {
+  for (let y = 0; y < map.length; y++) {
+    const x = map[y].indexOf(char);
+    if (x !== -1) return { x, y };
+  }
+  return { x: 1, y: 1 };
+}
+
+function dungeonFloor() {
+  return DUNGEONS[dungeon.areaId].floors[dungeon.floor];
+}
+
+function dungeonTile(x, y) {
+  const floor = dungeonFloor();
+  if (x < 0 || y < 0 || y >= floor.map.length || x >= floor.map[0].length) return '#';
+  return floor.map[y][x];
+}
+
+function revealDungeonAround() {
+  const seen = dungeon.seen[dungeon.floor];
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      seen.add(`${dungeon.x + dx},${dungeon.y + dy}`);
+    }
+  }
+}
+
+const VIEW_W = 11;
+const VIEW_H = 7;
+
+function moveDungeon(dx, dy) {
+  if (!dungeon || battle) return;
+  const nx = dungeon.x + dx;
+  const ny = dungeon.y + dy;
+  const tile = dungeonTile(nx, ny);
+  if (tile === '#' || tile === '') return;
+  dungeon.x = nx;
+  dungeon.y = ny;
+  revealDungeonAround();
+  const key = `${nx},${ny}`;
+  if (tile === 'C' && !dungeon.opened[dungeon.floor].has(key)) {
+    dungeon.opened[dungeon.floor].add(key);
+    const reward = randomTreasure();
+    if (reward.kind === 'gold') {
+      state.gold += reward.amount;
+      addDungeonLog(`打开宝箱：获得 ${fmt(reward.amount)} 金币。`);
+      showToast(`打开宝箱：获得 ${fmt(reward.amount)} 金币`);
+    } else {
+      addItem(reward.id, reward.amount);
+      addDungeonLog(`打开宝箱：获得 ${ITEMS[reward.id].name} ×${reward.amount}。`);
+      showToast(`打开宝箱：获得 ${ITEMS[reward.id].name} ×${reward.amount}`);
+    }
+    renderHeader();
+  } else if (tile === 'S') {
+    descendDungeon();
+    return;
+  } else if (tile === 'B') {
+    startDungeonBoss();
+    return;
   } else {
-    const text = event.resolved ? '队伍在营火边休息，HP 与 MP 已回复。' : '发现一处安全营火。';
-    card = `<div class="event-card">
-      <h3>营火</h3>
-      <p>${text}</p>
-      <div class="event-actions"><button data-explore-action="${event.resolved ? 'continue' : 'resolve'}">${event.resolved ? icon('arrow-right') : icon('heart')}${event.resolved ? '继续前进' : '扎营休息'}</button></div>
-    </div>`;
+    const def = DUNGEONS[dungeon.areaId];
+    if (chance(def.encounter)) {
+      startDungeonBattle();
+      return;
+    }
   }
-  $('mapView').innerHTML = `<div class="explore-panel">
-    <div class="explore-head">
-      <div><h2>${area.name}</h2><p style="margin:4px 0 0;color:var(--muted)">探索进度 ${explore.index + 1}/${explore.events.length}</p></div>
-      <div class="node-track">${nodes}</div>
-      <button data-explore-action="leave">${icon('x', 15)}离开区域</button>
-    </div>
-    ${card}
-  </div>`;
-}
-
-function resolveExploreEvent() {
-  const event = explore.events[explore.index];
-  if (event.type === 'treasure' && !event.resolved) {
-    if (event.reward.kind === 'gold') state.gold += event.reward.amount;
-    else addItem(event.reward.id, event.reward.amount);
-    event.resolved = true;
-  } else if (event.type === 'rest' && !event.resolved) {
-    state.party.forEach((member) => {
-      const stats = statsFor(member);
-      member.hp = stats.maxHp;
-      member.mp = stats.maxMp;
-    });
-    event.resolved = true;
-  }
-  renderHeader();
-  renderMapView();
+  renderDungeon();
   autosave();
 }
 
-function continueExplore() {
-  explore.index++;
-  if (explore.index >= explore.events.length) {
-    explore = null;
-    renderHeader();
-    renderMapView();
-    autosave();
-    showToast('区域探索完成');
-  } else {
-    renderMapView();
-  }
+function descendDungeon() {
+  dungeon.floor++;
+  const next = DUNGEONS[dungeon.areaId].floors[dungeon.floor];
+  const start = findTile(next.map, 'P');
+  dungeon.x = start.x;
+  dungeon.y = start.y;
+  revealDungeonAround();
+  addDungeonLog(`沿楼梯下到「${next.name}」。`);
+  renderHeader();
+  renderDungeon();
+  autosave();
 }
 
-function startExploreBattle() {
-  const event = explore.events[explore.index];
-  if (event.type === 'boss') {
-    startBattle([{ id: event.boss, scale: 1, boss: true }], {
-      areaName: `${AREAS[explore.areaId].name} · 首领战`,
-      boss: true,
-      areaId: explore.areaId
-    });
-  } else {
-    startBattle(event.group, { areaName: AREAS[explore.areaId].name });
+function startDungeonBattle() {
+  const area = AREAS[dungeon.areaId];
+  startBattle(randomGroup(area.pool), {
+    areaName: `${area.name} · ${dungeonFloor().name}`,
+    areaId: dungeon.areaId,
+    dungeon: true
+  });
+}
+
+function startDungeonBoss() {
+  const area = AREAS[dungeon.areaId];
+  addDungeonLog(`${ENEMIES[area.boss].name} 现身了！`);
+  startBattle([{ id: area.boss, scale: 1, boss: true }], {
+    areaName: `${area.name} · 首领战`,
+    boss: true,
+    areaId: dungeon.areaId,
+    dungeon: true
+  });
+}
+
+function addDungeonLog(text) {
+  if (!dungeon) return;
+  dungeon.log.push(text);
+  if (dungeon.log.length > 6) dungeon.log.shift();
+}
+
+function leaveDungeon() {
+  dungeon = null;
+  renderHeader();
+  goto('screen-main');
+  renderMapView();
+}
+
+function renderDungeon() {
+  if (!dungeon) return;
+  const area = AREAS[dungeon.areaId];
+  const def = DUNGEONS[dungeon.areaId];
+  const floor = dungeonFloor();
+  const opened = dungeon.opened[dungeon.floor];
+  const cleared = state.flags[dungeon.areaId];
+  $('exploreTitle').textContent = `${area.name} · ${floor.name}`;
+  $('exploreFloor').textContent = `第 ${dungeon.floor + 1}/${def.floors.length} 层${cleared ? ' · 已净化' : ''}`;
+  const tileLabels = { C: '宝箱', S: '楼梯', B: '首领' };
+  const hw = Math.floor(VIEW_W / 2);
+  const hh = Math.floor(VIEW_H / 2);
+  const cells = [];
+  for (let dy = -hh; dy <= hh; dy++) {
+    for (let dx = -hw; dx <= hw; dx++) {
+      const x = dungeon.x + dx;
+      const y = dungeon.y + dy;
+      let cls = 'floor';
+      let content = '';
+      if (x < 0 || y < 0 || y >= floor.map.length || x >= floor.map[0].length) {
+        cls = 'void';
+      } else if (x === dungeon.x && y === dungeon.y) {
+        cls = 'player';
+        content = icon('users', 26);
+      } else {
+        const ch = floor.map[y][x];
+        if (ch === '#') {
+          cls = 'wall';
+        } else if (ch === 'C') {
+          if (opened.has(`${x},${y}`)) cls = 'floor-open';
+          else { cls = 'chest'; content = `<span class="tile-label">${tileLabels.C}</span>`; }
+        } else if (ch === 'S') {
+          cls = 'stairs';
+          content = `<span class="tile-label">${tileLabels.S}</span>`;
+        } else if (ch === 'B') {
+          cls = 'boss';
+          content = `<span class="tile-label">${tileLabels.B}</span>`;
+        }
+      }
+      cells.push(`<div class="dungeon-tile ${cls}" data-dungeon-cell="${x},${y}">${content}</div>`);
+    }
   }
+  $('dungeonGrid').innerHTML = `<div class="dungeon-grid-inner" style="grid-template-columns:repeat(${VIEW_W},var(--tile-size))">${cells.join('')}</div>`;
 }
 
 function startTowerRun() {
@@ -1189,6 +1441,7 @@ function startBattle(enemyList, options = {}) {
     towerFloor: options.towerFloor || null,
     towerBoss: !!options.towerBoss,
     boss: !!options.boss,
+    dungeon: !!options.dungeon,
     areaId: options.areaId || null,
     party: state.party.map((member, index) => makePartyCombatant(member, index)),
     enemies: enemyList.map((entry, index) => makeEnemyCombatant(entry.id, index, entry.scale || 1, !!entry.boss))
@@ -1197,9 +1450,11 @@ function startBattle(enemyList, options = {}) {
   battleMenu = 'command';
   battle.order = buildOrder();
   addBattleLog(`${battle.areaName} 开始！`, 'system');
-  goto('screen-battle');
-  renderBattle();
-  advanceBattle();
+  withBlackScreen(() => {
+    goto('screen-battle');
+    renderBattle();
+    advanceBattle();
+  });
 }
 
 function buildOrder() {
@@ -1222,6 +1477,13 @@ function advanceBattle() {
       continue;
     }
     if (actor.side === 'player') {
+      if (autoBattle) {
+        battle.waiting = false;
+        battle.current = null;
+        renderBattle();
+        battleTimer = setTimeout(() => runAutoPlayerTurn(actor), 320 + Math.random() * 160);
+        return;
+      }
       battle.current = actor;
       battle.waiting = true;
       battleAction = null;
@@ -1500,6 +1762,7 @@ function completeBoss(areaId) {
 
 function finishVictory() {
   syncPartyFromBattle();
+  battle.synced = true;
   const exp = battle.enemies.reduce((sum, e) => sum + e.exp, 0);
   const gold = battle.enemies.reduce((sum, e) => sum + e.gold, 0);
   const lines = [`获得 ${fmt(exp)} 经验、${fmt(gold)} 金币。`];
@@ -1522,7 +1785,9 @@ function finishVictory() {
   }
   const next = battle.tower
     ? [{ label: '下一层', action: 'tower-next' }, { label: '离开回廊', action: 'tower-leave' }]
-    : [{ label: '继续', action: 'continue' }];
+    : battle.dungeon && battle.boss
+      ? [{ label: '返回地图', action: 'dungeon-done' }]
+      : [{ label: '继续', action: 'continue' }];
   battle.victory = { title: battle.tower && battle.towerBoss ? '首领击破' : '胜利', lines, next };
   renderHeader();
   renderBattle();
@@ -1530,9 +1795,10 @@ function finishVictory() {
 
 function finishDefeat() {
   syncPartyFromBattle();
+  battle.synced = true;
   autosave();
   battle.victory = { title: '全灭', lines: ['队伍全灭，冒险中断。'], next: [] };
-  goto('screen-gameover');
+  withBlackScreen(() => goto('screen-gameover'));
 }
 
 function addBattleLog(text, cls = '') {
@@ -1565,7 +1831,8 @@ function renderBattle() {
     </div>`).join('');
   const partyHtml = battle.party.map((member) => {
     const activeTurn = battle.current && battle.current.side === 'player' && battle.current.key === member.key;
-    return `<div class="combatant player ${member.alive && member.hp > 0 ? '' : 'dead'} ${activeTurn ? 'active-turn' : ''} ${targetableParty && (member.alive || allowReviveTarget) ? 'targetable' : ''}" data-battle-target="${member.key}">
+    const rowCls = member.row === 'back' ? ' back' : ' front';
+    return `<div class="combatant player${rowCls} ${member.alive && member.hp > 0 ? '' : 'dead'} ${activeTurn ? 'active-turn' : ''} ${targetableParty && (member.alive || allowReviveTarget) ? 'targetable' : ''}" data-battle-target="${member.key}">
       ${partySprite(member.job)}
       ${activeTurn ? `<div class="turn-badge">${icon('zap', 13)}行动中</div>` : ''}
       <div class="combatant-name">${member.name}</div>
@@ -1574,7 +1841,7 @@ function renderBattle() {
       <div class="mpbar"><i style="width:${Math.max(0, member.mp / member.maxMp * 100)}%"></i></div>
     </div>`;
   }).join('');
-  $('battleStage').innerHTML = `<div class="combat-group enemies">${enemyHtml}</div><div class="combat-group">${partyHtml}</div>`;
+  $('battleStage').innerHTML = `<div class="combat-group party">${partyHtml}</div><div class="combat-group enemies">${enemyHtml}</div>`;
   renderBattleLog();
   if (battle.victory) {
     renderBattleResult();
@@ -1651,33 +1918,98 @@ function cancelBattleAction() {
 }
 
 function handleBattleResult(action) {
-  const wasTower = battle.tower;
-  battle = null;
-  battleAction = null;
-  battleMenu = 'command';
-  $('battleCommand').innerHTML = '';
-  $('battleStage').innerHTML = '';
-  goto('screen-main');
-  if (action === 'tower-next' && wasTower && towerRun) {
-    towerRun.floor++;
+  withBlackScreen(() => {
+    const wasTower = battle.tower;
+    const wasDungeon = battle.dungeon;
+    const bossDone = action === 'dungeon-done';
+    if (battle && !battle.synced) syncPartyFromBattle();
+    battle = null;
+    battleAction = null;
+    battleMenu = 'command';
+    $('battleCommand').innerHTML = '';
+    $('battleStage').innerHTML = '';
+    if (action === 'tower-next' && wasTower && towerRun) {
+      towerRun.floor++;
+      goto('screen-main');
+      renderHeader();
+      renderMapView();
+      showToast(`进入永恒回廊 ${towerRun.floor} 层`);
+      return;
+    }
+    if (action === 'tower-leave') {
+      towerRun = null;
+      goto('screen-main');
+      renderHeader();
+      renderMapView();
+      showToast('已离开永恒回廊');
+      return;
+    }
+    if (bossDone && wasDungeon) {
+      dungeon = null;
+      goto('screen-main');
+      renderHeader();
+      renderMapView();
+      showToast('区域已净化');
+      return;
+    }
+    if (wasDungeon && dungeon) {
+      renderDungeon();
+      goto('screen-explore');
+      renderHeader();
+      return;
+    }
+    goto('screen-main');
     renderHeader();
     renderMapView();
-    showToast(`进入永恒回廊 ${towerRun.floor} 层`);
-    return;
+  });
+}
+
+function toggleAutoBattle() {
+  autoBattle = !autoBattle;
+  updateAutoBattleBtn();
+  if (autoBattle && battle && battle.waiting && battle.current && battle.current.side === 'player') {
+    const actor = battle.current;
+    battleAction = null;
+    battleMenu = 'command';
+    battle.waiting = false;
+    battle.current = null;
+    runAutoPlayerTurn(actor);
   }
-  if (action === 'tower-leave') {
-    towerRun = null;
-    renderHeader();
-    renderMapView();
-    showToast('已离开永恒回廊');
-    return;
+}
+
+function autoChoosePlayerAction(actor) {
+  const enemies = battle.enemies.filter((e) => e.alive && e.hp > 0);
+  const weakest = () => [...enemies].sort((a, b) => a.hp - b.hp)[0];
+  const healSkillId = actor.skills.find((id) => SKILLS[id] && (SKILLS[id].kind === 'heal' || SKILLS[id].kind === 'revive') && actor.mp >= SKILLS[id].cost);
+  if (healSkillId) {
+    const s = SKILLS[healSkillId];
+    if (s.kind === 'revive') {
+      const dead = battle.party.find((p) => !p.alive);
+      if (dead) return { action: { kind: 'skill', skillId: healSkillId }, targetKey: dead.key };
+    } else if (s.target === 'ally') {
+      const hurt = battle.party.filter((p) => p.alive && p.hp < p.maxHp * 0.5).sort((a, b) => a.hp - b.hp)[0];
+      if (hurt) return { action: { kind: 'skill', skillId: healSkillId }, targetKey: hurt.key };
+    } else if (s.target === 'all_ally' && battle.party.some((p) => p.alive && p.hp < p.maxHp * 0.6)) {
+      return { action: { kind: 'skill', skillId: healSkillId }, targetKey: null };
+    }
   }
-  if (explore) {
-    continueExplore();
-  } else {
-    renderHeader();
-    renderMapView();
+  if (!enemies.length) return { action: { kind: 'defend' }, targetKey: null };
+  const dmgSkillId = actor.skills.find((id) => {
+    const s = SKILLS[id];
+    return s && s.target === 'enemy' && s.kind !== 'defend' && s.kind !== 'buff' && actor.mp >= (s.cost || 0);
+  });
+  if (dmgSkillId && Math.random() < 0.35) {
+    return { action: { kind: 'skill', skillId: dmgSkillId }, targetKey: weakest().key };
   }
+  return { action: { kind: 'attack' }, targetKey: weakest().key };
+}
+
+function runAutoPlayerTurn(actor) {
+  if (!battle || battle.over || !actor.alive || actor.hp <= 0) return;
+  const pick = autoChoosePlayerAction(actor);
+  const lines = resolveActorAction(actor, pick.action, pick.targetKey);
+  lines.forEach((line) => addBattleLog(line, classifyLog(line)));
+  finishActorTurn();
 }
 
 function renderMenuView() {
@@ -2329,6 +2661,7 @@ function startNewGame() {
   state = defaultState();
   saveGame(false);
   explore = null;
+  dungeon = null;
   towerRun = null;
   battle = null;
   currentTab = 'map';
@@ -2343,6 +2676,7 @@ function continueGame() {
     return;
   }
   explore = null;
+  dungeon = null;
   towerRun = null;
   battle = null;
   currentTab = 'map';
@@ -2355,6 +2689,7 @@ function continueGame() {
 function gameOverToTitle() {
   battle = null;
   explore = null;
+  dungeon = null;
   towerRun = null;
   goto('screen-title');
   renderTitle();
@@ -2363,6 +2698,7 @@ function gameOverToTitle() {
 function gameOverContinue() {
   battle = null;
   explore = null;
+  dungeon = null;
   towerRun = null;
   // 失败后不读档：保留当前（全灭/存档前）状态，回到主菜单由玩家自理（旅店/道具复活）
   goto('screen-main');
@@ -2418,10 +2754,19 @@ const HELP_GUIDES = {
   map: [
     '冒险页（主视区）',
     [
-      ['交互逻辑', '底部 dock「冒险」进入。点击地图上的地区卡开始探索；回廊（塔）为无尽挑战模式。'],
+      ['交互逻辑', '底部 dock「冒险」进入。点击地区卡开始探索，进入全屏地牢；回廊（塔）为无尽挑战模式。'],
       ['核心功能', '主线推进：烈焰洞窟 → 碧水神殿 → 黄土遗迹 → 疾风之塔 → 暗之王座。地区有「可探索 / 已讨伐 / 未解锁」状态。'],
       ['设计准则', '商业手游大地图惯例：地区卡呈现图标 + 状态标签 + 等级信息，主 CTA（开始探索/再探索）置于卡片底部；未解锁地区置灰加锁。'],
       ['UI 布局', '卡片流式排布（自适应网格）。左上贴边浮窗常驻显示「使命」进度与「队伍」出战状态。']
+    ]
+  ],
+  explore: [
+    '地牢探索（近景网格地牢）',
+    [
+      ['交互逻辑', '进入地牢后为近景网格视野：摄像机贴近小队、以队伍为中心显示 11×7 的可见区域，移动时镜头跟随。全地图已显现、无迷雾遮蔽——靠近窗口边缘的地格自然进入视野。用左下角虚拟摇杆（按住拖动，持续移动）或键盘方向键移动；走上宝箱即打开（奖励浮窗提示）、走上楼梯进入下一层、走上首领触发首领战；普通地板行走有概率随机遇敌。'],
+      ['核心功能', 'FF 式踩雷遇敌：每次迈入普通地板按区域遭遇率随机开战，胜利后原地继续。所有地格均直接以真实地形显示，无需逐步揭示；地格效果与地图制作素材见右上「图例」。逃离/脱战会保留战斗中的 HP/MP 消耗，需用道具或旅店回复。'],
+      ['设计准则', '近景第三人称跟随 + 全图已显现（无迷雾），队伍居中、镜头随移动刷新；地板与墙壁用强对底色区分；左下角虚拟摇杆支持按住持续移动；右上「图例」说明地格效果与素材。'],
+      ['UI 布局', '顶部条（区域名 + 层级 + 离开/图例/说明）→ 铺满主视图的中央近景视野（队伍居中）→ 左下角虚拟摇杆。']
     ]
   ],
   party: [
@@ -2472,10 +2817,10 @@ const HELP_GUIDES = {
   battle: [
     '战斗界面',
     [
-      ['交互逻辑', '回合制：玩家行动 → 敌方行动 → 下一回合。点击左下指令盘选择攻击/技能/道具/逃跑；选择技能后需点选目标（敌方或队友），可取消重选。'],
-      ['核心功能', '前后排机制生效（后排近战输出/受击削弱）；技能消耗 MP；击破敌人获得经验与金币；全灭进入游戏结束画面。'],
-      ['设计准则', '敌人居右、我方居左，当前行动单位高亮描边；HP/MP 条形化展示；下方日志记录每回合经过，结算面板总结战果。'],
-      ['UI 布局', '顶部（标题 + 回合 + 说明按钮）→ 战斗舞台（敌我双方卡牌）→ 底部控制台（日志 + 指令/目标选择）。']
+      ['交互逻辑', '回合制：玩家行动 → 敌方行动 → 下一回合。点击底部指令盘选择攻击/技能/道具/逃跑；选择技能后需点选目标（敌方或队友），可取消重选。右上「自动」可一键托管：自动优先治疗/复活、其次用伤害技能，其余普攻收尾，点开即生效。'],
+      ['核心功能', '前后排机制生效（后排近战输出/受击削弱、画面上轻微后退错位）；技能消耗 MP；击破敌人获得经验与金币；全灭进入游戏结束画面。进出战斗带黑屏转场。'],
+      ['设计准则', '我方居左、敌人居右，双方各成一列上下排布，后排成员轻微上移错位制造纵深；当前行动单位高亮描边；HP/MP 条形化展示；下方日志记录每回合经过。'],
+      ['UI 布局', '顶部（标题 + 回合 + 自动/说明按钮）→ 战斗舞台（左列我方、右列敌方）→ 底部控制台（日志 + 指令/目标选择）。']
     ]
   ],
   gameover: [
@@ -2490,6 +2835,7 @@ const HELP_GUIDES = {
 };
 
 function currentHelpKey() {
+  if (!$('screen-explore').classList.contains('hidden')) return 'explore';
   if (!$('screen-main').classList.contains('hidden')) {
     if (currentTab === 'menu') return menuTab;
     return currentTab;
@@ -2510,15 +2856,63 @@ function closeHelp() {
   $('helpOverlay').classList.add('hidden');
 }
 
+const LEGEND_ENTRIES = [
+  ['floor', '地板', '.', '可通行地面；每次迈入按区域遭遇率随机遇敌。'],
+  ['wall', '墙壁', '#', '不可通行，作为地图边界与路径分隔。'],
+  ['chest', '宝箱', 'C', '走上同一格即打开，获得金币或道具；已开启的宝箱变为暗色地板。'],
+  ['stairs', '楼梯', 'S', '走上进入下一层（仅非末层放置）。'],
+['boss', '首领', 'B', '走上触发首领战（仅末层放置）。'],
+  ['void', '深渊/视野外', '×', '视野之外的区域与地图边缘，显示为深渊背景。']
+];
+const LEGEND_ASSETS = [
+  ['底板', '角色可走的地面瓦片（对应地格 `.`），每层铺满可走区域。'],
+  ['墙壁', '阻挡瓦片（对应 `#`），把地图切分成通道与房间。'],
+  ['深渊背景', '地图边缘与视野之外的暗色背景，用于遮蔽与画面纵深。'],
+  ['楼梯门', '上下楼传送瓦片（对应 `S`），仅放在非末层。'],
+  ['首领战点', 'Boss 瓦片（对应 `B`），仅放在末层。'],
+  ['出生点', '入口瓦片（对应 `P`），每层 1 个，进入楼层时队伍出现在此处。'],
+  ['地图尺寸', '每层固定 13 列宽；每主线区域 1~3 层，末层才有首领。']
+];
+
+function openLegend() {
+  const swatchHtml = (cls) => `<span class="legend-swatch ${cls}"></span>`;
+  const entriesHtml = LEGEND_ENTRIES.map(([cls, name, sym, desc]) => `
+    <div class="legend-row">
+      ${swatchHtml(cls)}
+      <div class="legend-text"><strong>${name} <em>${sym}</em></strong><p>${desc}</p></div>
+    </div>`).join('');
+  const assetsHtml = LEGEND_ASSETS.map(([name, desc]) => `
+    <div class="legend-row legend-asset">
+      <div class="legend-text"><strong>${name}</strong><p>${desc}</p></div>
+    </div>`).join('');
+  $('legendBody').innerHTML = `<h3>地格效果</h3><div class="legend-list">${entriesHtml}</div><h3>地图制作素材清单</h3><div class="legend-list">${assetsHtml}</div>`;
+  $('legendOverlay').classList.remove('hidden');
+}
+
+function closeLegend() {
+  $('legendOverlay').classList.add('hidden');
+}
+
 document.addEventListener('click', (event) => {
   if (!$('helpOverlay').classList.contains('hidden') && event.target.closest('#helpOverlay') && !event.target.closest('.help-panel')) {
     closeHelp();
+  }
+  if (!$('legendOverlay').classList.contains('hidden') && event.target.closest('#legendOverlay') && !event.target.closest('.help-panel')) {
+    closeLegend();
   }
   const button = event.target.closest('button');
   const targetCard = event.target.closest('[data-battle-target]');
   if (targetCard && battleAction) {
     playerChooseTarget(targetCard.dataset.battleTarget);
     return;
+  }
+  const dungeonCell = event.target.closest('[data-dungeon-cell]');
+  if (dungeonCell && dungeon) {
+    const [x, y] = dungeonCell.dataset.dungeonCell.split(',').map(Number);
+    if (Math.abs(x - dungeon.x) + Math.abs(y - dungeon.y) === 1) {
+      moveDungeon(x - dungeon.x, y - dungeon.y);
+      return;
+    }
   }
   if (!button) return;
 
@@ -2556,6 +2950,22 @@ document.addEventListener('click', (event) => {
   }
   if (button.id === 'battleHelpBtn') {
     openHelp('battle');
+    return;
+  }
+  if (button.id === 'autoBattleBtn') {
+    toggleAutoBattle();
+    return;
+  }
+  if (button.id === 'exploreHelpBtn') {
+    openHelp('explore');
+    return;
+  }
+  if (button.id === 'exploreLegendBtn') {
+    openLegend();
+    return;
+  }
+  if (button.id === 'legendCloseBtn' || button.closest('#legendOverlay')) {
+    closeLegend();
     return;
   }
   if (button.id === 'gameoverHelpBtn') {
@@ -2654,23 +3064,14 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  const exploreAction = button.dataset.exploreAction;
-  if (exploreAction === 'battle') {
-    startExploreBattle();
+  const dungeonMove = button.dataset.dungeonMove;
+  if (dungeonMove) {
+    const [dx, dy] = dungeonMove.split(',').map(Number);
+    moveDungeon(dx, dy);
     return;
   }
-  if (exploreAction === 'continue') {
-    continueExplore();
-    return;
-  }
-  if (exploreAction === 'resolve') {
-    resolveExploreEvent();
-    return;
-  }
-  if (exploreAction === 'leave') {
-    explore = null;
-    renderHeader();
-    renderMapView();
+  if ('dungeonLeave' in button.dataset) {
+    leaveDungeon();
     return;
   }
 
@@ -2758,5 +3159,81 @@ document.addEventListener('click', (event) => {
     handleBattleResult(resultAction);
   }
 });
+
+document.addEventListener('keydown', (event) => {
+  if (event.target && (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA')) return;
+  if (!dungeon || battle) return;
+  const map = {
+    ArrowUp: [0, -1],
+    ArrowDown: [0, 1],
+    ArrowLeft: [-1, 0],
+    ArrowRight: [1, 0]
+  };
+  const move = map[event.key];
+  if (move) {
+    event.preventDefault();
+    moveDungeon(move[0], move[1]);
+  }
+});
+
+// 虚拟摇杆：按住某个方向持续移动，松开停止；每次迈入仍按遭遇率判别。
+(function initJoystick() {
+  const joy = document.getElementById('joystick');
+  const knob = document.getElementById('joystickKnob');
+  if (!joy || !knob) return;
+  const RADIUS = 30;
+  const DEAD = 8;
+  const STEP_MS = 150;
+  let joyDir = null;
+  let joyTimer = null;
+  let active = false;
+
+  function joyTick() {
+    if (joyDir) moveDungeon(joyDir[0], joyDir[1]);
+  }
+  function joySetDir(dx, dy) {
+    if (joyDir && joyDir[0] === dx && joyDir[1] === dy) return;
+    if (dx === 0 && dy === 0) {
+      joyDir = null;
+      if (joyTimer) { clearInterval(joyTimer); joyTimer = null; }
+      knob.style.transform = 'translate(0,0)';
+      return;
+    }
+    joyDir = [dx, dy];
+    joyTick();
+    if (joyTimer) clearInterval(joyTimer);
+    joyTimer = setInterval(joyTick, STEP_MS);
+  }
+  function handlePointer(e) {
+    const rect = joy.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    const len = Math.min(RADIUS, Math.hypot(dx, dy));
+    const ang = Math.atan2(dy, dx);
+    knob.style.transform = `translate(${Math.cos(ang) * len}px,${Math.sin(ang) * len}px)`;
+    if (len < DEAD) { joySetDir(0, 0); return; }
+    if (Math.abs(dx) > Math.abs(dy)) joySetDir(dx > 0 ? 1 : -1, 0);
+    else joySetDir(0, dy > 0 ? 1 : -1);
+  }
+  joy.addEventListener('pointerdown', (e) => {
+    if (!dungeon || battle) return;
+    e.preventDefault();
+    active = true;
+    try { joy.setPointerCapture(e.pointerId); } catch (err) { /* synthetic pointer */ }
+    handlePointer(e);
+  });
+  joy.addEventListener('pointermove', (e) => {
+    if (active) handlePointer(e);
+  });
+  const end = () => {
+    if (!active) return;
+    active = false;
+    joySetDir(0, 0);
+  };
+  joy.addEventListener('pointerup', end);
+  joy.addEventListener('pointercancel', end);
+})();
 
 renderTitle();

@@ -320,10 +320,6 @@ main { position: relative; flex: 1; min-height: 0; }
 }
 .explore-head, .tower-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
 .explore-head h2, .tower-head h2 { margin: 0; color: var(--gold); font-family: var(--font-display); }
-.node-track { display: flex; gap: 7px; align-items: center; }
-.node { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--muted); background: rgba(12,20,34,.8); }
-.node.done { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 12px rgba(87,217,189,.5); }
-.node.current { background: var(--gold); border-color: var(--gold); animation: nodePulse 1.4s ease-in-out infinite; box-shadow: 0 0 14px rgba(245,200,107,.6); }
 .event-card {
   min-height: 150px;
   background: linear-gradient(145deg, rgba(33,50,76,.94), rgba(19,30,52,.97));
@@ -444,31 +440,33 @@ main { position: relative; flex: 1; min-height: 0; }
 
 .battle-view { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .battle-stage {
-  position: relative; flex: 1; min-height: 320px;
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 18px;
-  padding: 22px 30px 26px;
+  position: relative; flex: 1; min-height: 360px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 18px 30px;
   background:
     radial-gradient(600px 300px at 50% 38%, rgba(255,235,180,.12), transparent 60%),
     linear-gradient(180deg,#2c3f63 0%,#6a5a4e 56%,#3f6b50 57%,#11201b 100%);
   overflow: hidden;
 }
-.combat-group { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 12px; max-width: 52%; }
-.combat-group.enemies { justify-content: flex-end; }
+.combat-group { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; max-width: 40%; }
+.combat-group.enemies { align-items: center; }
 .combatant {
-  position: relative; width: 122px; min-height: 156px;
-  background: rgba(10,16,28,.84); border: 1px solid #4c5d7a; border-radius: 12px; padding: 10px;
-  display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center;
-  box-shadow: 0 12px 26px rgba(0,0,0,.38);
+  position: relative; width: 118px; min-height: 96px;
+  background: rgba(10,16,28,.84); border: 1px solid #4c5d7a; border-radius: 12px; padding: 7px 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;
+  box-shadow: 0 10px 22px rgba(0,0,0,.38);
   transition: transform 120ms ease, border-color 120ms ease, filter 120ms ease, box-shadow 120ms ease;
 }
-.combatant .sprite { width: 64px; height: 64px; filter: drop-shadow(0 5px 10px rgba(0,0,0,.45)); }
-.combatant .combatant-name { color: var(--ink); font-size: 13px; line-height: 1.2; }
-.combatant .combatant-hp { width: 100%; color: var(--muted); font-size: 11px; }
+.combatant .sprite { width: 50px; height: 50px; filter: drop-shadow(0 5px 10px rgba(0,0,0,.45)); }
+.combatant .combatant-name { color: var(--ink); font-size: 12px; line-height: 1.2; }
+.combatant .combatant-hp { width: 100%; color: var(--muted); font-size: 10.5px; }
 .hpbar { width: 100%; height: 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,.15); background: rgba(58,15,15,.6); overflow: hidden; }
 .hpbar i { display: block; height: 100%; background: linear-gradient(90deg,#f0a060,#58e09a); border-radius: 999px; }
 .mpbar { width: 100%; height: 6px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(14,32,52,.7); overflow: hidden; }
 .mpbar i { display: block; height: 100%; background: linear-gradient(90deg,#8ac0f2,#6fa7e8); border-radius: 999px; }
 .combatant.enemy { border-color: rgba(224,96,90,.5); }
+.combatant.back { transform: translateY(-10px); filter: brightness(.78) saturate(.85); box-shadow: 0 6px 12px rgba(0,0,0,.3); }
+.combatant.front { z-index: 1; }
 .combatant.targetable { cursor: pointer; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,200,107,.25), 0 0 20px rgba(245,200,107,.4); }
 .combatant.targetable:hover { transform: translateY(-5px); }
 .combatant.hit { filter: brightness(1.8) saturate(1.5); transform: translateX(4px); }
@@ -595,6 +593,16 @@ main { position: relative; flex: 1; min-height: 0; }
 }
 .toast.show { transform: translate(-50%,0); }
 
+/* 进出战斗黑屏转场 */
+.fade-overlay {
+  position: fixed; inset: 0; z-index: 130; background: #000;
+  opacity: 0; pointer-events: none; transition: opacity 220ms ease;
+}
+.fade-overlay.show { opacity: 1; pointer-events: auto; }
+
+/* 自动战斗按钮激活态 */
+.help-btn.active { background: rgba(87,217,189,.22); border-color: rgba(87,217,189,.7); color: var(--teal); }
+
 /* 图标与通用 */
 .icon { display: inline-block; vertical-align: -3px; flex: none; }
 .sprite { display: block; }
@@ -648,6 +656,120 @@ button:has(.icon) { display: inline-flex; align-items: center; justify-content: 
 .help-section h3 { margin: 0 0 5px; color: var(--teal); font-size: 13px; font-family: var(--font-display); }
 .help-section p { margin: 0; color: var(--dim); line-height: 1.7; font-size: 13px; }
 
+/* 地牢探索 */
+#screen-explore .explore-topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(10,18,32,.9);
+  border-bottom: 1px solid var(--edge);
+}
+.explore-topbar-right { display: flex; align-items: center; gap: 12px; }
+.explore-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  padding: 14px 18px;
+}
+.dungeon-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+.dungeon-grid {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  background: rgba(8,14,28,.55);
+  padding: 12px;
+}
+.dungeon-grid-inner {
+  --tile-size: 48px;
+  display: grid;
+  gap: 3px;
+  margin: 0 auto;
+  width: max-content;
+}
+.dungeon-tile {
+  position: relative;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: border-color 100ms ease, box-shadow 100ms ease;
+}
+.dungeon-tile.wall { background: #0c1324; border-color: rgba(130,150,190,.4); cursor: default; box-shadow: inset 0 0 6px rgba(0,0,0,.7); }
+.dungeon-tile.floor { background: rgba(96,126,170,.82); border-color: rgba(190,210,240,.25); }
+.dungeon-tile.floor:hover { border-color: rgba(245,200,107,.6); box-shadow: 0 0 10px rgba(245,200,107,.35); }
+.dungeon-tile.floor-open { background: rgba(64,54,28,.55); border-color: rgba(245,200,107,.2); color: rgba(245,200,107,.55); cursor: default; }
+.dungeon-tile.chest { background: rgba(126,96,40,.75); border-color: rgba(245,200,107,.6); color: var(--gold); }
+.dungeon-tile.stairs { background: rgba(46,110,86,.75); border-color: rgba(96,208,168,.6); color: #7ff0cf; }
+.dungeon-tile.boss { background: rgba(150,46,58,.8); border-color: rgba(255,99,120,.6); color: #ffb3bd; }
+.dungeon-tile.player { background: rgba(88,138,225,.9); border-color: var(--gold); color: #fff; box-shadow: 0 0 16px rgba(245,200,107,.6); animation: nodePulse 1.6s ease-in-out infinite; }
+.dungeon-tile.void { background: rgba(4,7,14,.95); cursor: default; }
+.dungeon-tile .tile-label { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; font-weight: 700; letter-spacing: .5px; pointer-events: none; text-shadow: 0 1px 4px rgba(0,0,0,.85); }
+
+/* 虚拟摇杆 */
+.joystick {
+  position: absolute;
+  bottom: 22px;
+  right: 26px;
+  z-index: 6;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, rgba(52,76,116,.6), rgba(18,28,48,.82));
+  border: 1px solid rgba(87,217,189,.45);
+  box-shadow: 0 10px 28px rgba(0,0,0,.5), inset 0 0 20px rgba(0,0,0,.4);
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+.joystick-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(130,160,215,.95), rgba(62,92,150,.92));
+  border: 1px solid rgba(245,200,107,.55);
+  box-shadow: 0 4px 14px rgba(0,0,0,.5);
+  transform: translate(0,0);
+  transition: transform 40ms linear;
+  pointer-events: none;
+}
+
+/* 地牢图例浮层 */
+.help-body h3 { margin: 0; color: var(--gold); font-size: 15px; }
+.legend-list { display: flex; flex-direction: column; gap: 10px; }
+.legend-row { display: flex; align-items: center; gap: 12px; }
+.legend-swatch { flex: none; width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); }
+.legend-swatch.floor { background: rgba(38,52,80,.55); }
+.legend-swatch.wall { background: rgba(28,36,54,.9); }
+.legend-swatch.chest { background: rgba(90,70,30,.55); border-color: rgba(245,200,107,.4); }
+.legend-swatch.stairs { background: rgba(40,86,70,.5); border-color: rgba(96,208,168,.45); }
+.legend-swatch.boss { background: rgba(110,34,44,.55); border-color: rgba(255,99,120,.5); }
+.legend-swatch.void { background: rgba(4,7,14,.95); }
+.legend-text { min-width: 0; }
+.legend-text strong { color: var(--ink); font-size: 14px; }
+.legend-text strong em { font-style: normal; color: var(--gold); font-family: monospace; margin-left: 4px; }
+.legend-text p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+
 /* 动效 */
 @keyframes turnPulse { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 @keyframes nodePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.28)} }
@@ -668,11 +790,15 @@ button:has(.icon) { display: inline-flex; align-items: center; justify-content: 
   .content-panel { grid-column: 1; grid-row: 2; }
   .mobiledock { grid-column: 1; grid-row: 3; gap: 4px; padding: 6px; flex-wrap: wrap; }
   .dock-item { min-width: 60px; font-size: 10px; }
-  .battle-stage { flex-direction: column; align-items: stretch; min-height: 420px; }
-  .combat-group { max-width: 100%; justify-content: center; }
-  .combatant { width: 104px; min-height: 140px; }
-  .battle-console { grid-template-columns: 1fr; height: 240px; }
+  .battle-stage { flex-direction: row; align-items: center; min-height: 400px; gap: 6px; padding: 14px 10px; }
+  .combat-group { max-width: 50%; gap: 6px; }
+  .combatant { width: 88px; min-height: 92px; padding: 6px; }
+  .combatant .sprite { width: 42px; height: 42px; }
+  .battle-console { grid-template-columns: 1fr; height: 260px; }
   .battle-log { border-right: 0; border-bottom: 1px solid var(--edge); max-height: 90px; }
   .command-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .shop-topbar { flex-direction: column; align-items: flex-start; }
+  .dungeon-grid-inner { --tile-size: 38px; }
+  .joystick { bottom: 14px; right: 16px; width: 96px; height: 96px; }
+  .joystick-knob { width: 42px; height: 42px; margin: -21px 0 0 -21px; }
 }
